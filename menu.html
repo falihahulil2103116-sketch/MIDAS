@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATAVENTURE - Menu</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- TOMBOL INFORMASI -->
+<button class="info-menu-btn" onclick="toggleInfoMenu()">
+    ☰
+</button>
+
+<!-- PANEL INFORMASI -->
+<div id="infoPanel" class="info-panel">
+
+    <div class="info-panel-header">
+        <h2>ℹ️ Informasi Media</h2>
+
+        <button class="close-info-btn" onclick="toggleInfoMenu()">
+            ×
+        </button>
+    </div>
+
+    <div class="info-panel-content">
+
+        <!-- CP -->
+        <div class="info-section">
+            <h3>Capaian Pembelajaran</h3>
+            <p>
+                Peserta didik mampu memahami, menyajikan, dan
+                menginterpretasikan data dalam bentuk diagram lingkaran.
+            </p>
+        </div>
+
+        <!-- TP -->
+        <div class="info-section">
+            <h3>Tujuan Pembelajaran</h3>
+            <p>
+                1.	Melalui kegiatan mengamati dan mengolah data yang disajikan dalam tabel, 
+                peserta didik mampu menyajikan data dalam bentuk diagram lingkaran 
+                dengan menentukan besar sudut setiap bagian secara tepat.
+                
+            </p>
+            <p>
+                
+                2. Melalui kegiatan mengamati diagram lingkaran, peserta didik
+                mampu menafsirkan informasi yang disajikan dalam diagram lingkaran dengan benar.
+
+            </p>
+        </div>
+
+        <!-- PENGEMBANG -->
+        <div class="info-section">
+            <h3>Pengembang</h3>
+            <p>
+                <strong>Falihah Ulil Karimah</strong><br>
+                Pendidikan Matematika<br>
+                Universitas Negeri Malang
+            </p>
+        </div>
+
+        <!-- PEMBIMBING -->
+        <div class="info-section">
+            <h3>Dosen Pembimbing</h3>
+            <p>
+                <strong>Dr. Anita Dewi Utami, M.Pd.</strong><br>
+                Pendidikan Matematika<br>
+                Universitas Negeri Malang
+            </p>
+        </div>
+
+        <!-- REFERENSI -->
+        <div class="info-section">
+            <h3>Referensi</h3>
+
+            <p>
+                Ross, S. M. <em>Introductory Statistics</em>.
+            </p>
+
+            <p>
+                Referensi lain yang digunakan dalam penyusunan
+                materi dan pengembangan media MIDAS.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="logo">🧭</div>
+
+            <h1>MIDAS</h1>
+
+            <p class="tagline">
+                Pilih petualanganmu!
+            </p>
+
+            <div class="menu">
+
+                <button onclick="location.href='materi.html'">
+                    Materi Interaktif 1
+                </button>
+
+                <button onclick="location.href='materi2.html'">
+                    Materi Interaktif 2
+                </button>
+
+                <button onclick="location.href='maker.html'">
+                    Diagram Maker
+                </button>
+
+                <button onclick="location.href='evaluasi.html'">
+                    Evaluasi
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+<script>
+
+    function toggleInfoMenu() {
+
+        const panel =
+            document.getElementById("infoPanel");
+
+        panel.classList.toggle("show");
+
+    }
+
+</script> 
+</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MIDAS - Belajar Diagram Lingkaran</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card materi-card">
+
+            <!-- HEADER -->
+            <div class="logo">⭕</div>
+
+            <h1>MIDAS</h1>
+
+            <p class="tagline">
+                Media Interaktif Diagram Lingkaran dengan Scaffolding
+            </p>
+
+            <!-- PENGERTIAN MENURUT AHLI -->
+<div class="expert-box">
+
+    <h3>📖 Apa Itu Diagram Lingkaran?</h3>
+
+    <p>
+        <strong>Sheldon M. Ross</strong> dalam
+        <em>Introductory Statistics</em> menjelaskan bahwa diagram lingkaran
+        (<em>pie chart</em>) merupakan <strong>lingkaran yang dibagi menjadi
+        beberapa sektor</strong>, dengan setiap sektor mewakili kategori data.
+        
+    </p>
+
+</div>
+
+            <!-- PROGRESS -->
+            <div class="progress-container">
+                <div class="progress-text">
+                    Langkah <span id="nomorLangkah">1</span> dari 5
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+
+
+            <!-- LANGKAH 1 -->
+            <section class="lesson-step active" id="step1">
+
+                <h2>🔎 Mengenal Diagram Lingkaran</h2>
+
+                <p>
+                    Pernahkah kamu melihat data yang disajikan
+                    dalam bentuk lingkaran seperti sebuah pie?
+                </p>
+
+                <div class="visual-circle">
+                  <img src="diagram-lingkaran.png" alt="Diagram lingkaran">
+                </div>
+
+                <p>
+                    Sederhananya, diagram lingkaran adalah penyajian data
+                    menggunakan sebuah lingkaran yang dibagi
+                    menjadi beberapa bagian.
+                </p>
+
+                <div class="info-box">
+                    💡 <strong>Ingat!</strong><br>
+                    Satu lingkaran penuh mewakili
+                    <strong>100%</strong> atau <strong>360°</strong>.
+                </div>
+
+                <button onclick="nextStep()">
+                    Saya Paham →
+                </button>
+
+            </section>
+
+
+            <!-- LANGKAH 2 -->
+            <section class="lesson-step" id="step2">
+
+                <h2>📊 Hubungan Data dan Lingkaran</h2>
+
+                <p>
+                    Perhatikan data buah favorit siswa berikut.
+                </p>
+
+                <table class="data-table">
+
+                    <tr>
+                        <th>Buah</th>
+                        <th>Jumlah Siswa</th>
+                    </tr>
+
+                    <tr>
+                        <td>🍎 Apel</td>
+                        <td>5</td>
+                    </tr>
+
+                    <tr>
+                        <td>🥭 Mangga</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <td>🍊 Jeruk</td>
+                        <td>4</td>
+                    </tr>
+
+                    <tr>
+                        <td>🍌 Pisang</td>
+                        <td>4</td>
+                    </tr>
+
+                </table>
+
+                <p>
+                    Sebelum membuat diagram, kita harus mengetahui
+                    jumlah seluruh data.
+                </p>
+
+                <div class="question-box">
+
+                    <strong>Berapa jumlah seluruh data?</strong>
+
+                    <input
+                        type="number"
+                        id="jawabanTotal"
+                        placeholder="Masukkan jawaban"
+                    >
+
+                    <button onclick="cekTotal()">
+                        Periksa Jawaban
+                    </button>
+
+                    <p id="feedbackTotal"></p>
+
+                </div>
+
+                <button
+                    class="hint-button"
+                    onclick="tampilkanHint('hintTotal')">
+                    💡 Butuh Bantuan?
+                </button>
+
+                <div id="hintTotal" class="hint">
+                    Petunjuk: jumlahkan semua frekuensi. Jumlah seluruh data = jumlah seluruh siswa
+                    <br>
+                    5 + 7 + 4 + 4 = ...
+                </div>
+
+            </section>
+
+
+            <!-- LANGKAH 3 -->
+            <section class="lesson-step" id="step3">
+
+                <h2>📐 Menentukan Besar Sudut</h2>
+
+                <p>
+                    Sekarang kita akan menentukan besar sudut
+                    setiap bagian diagram.
+                </p>
+
+                <div class="info-box">
+
+    💡 <strong>Petunjuk:</strong>
+
+    <p>
+        Besar sudut suatu kategori dapat dihitung dengan:
+    </p>
+
+    <div class="formula">
+        <span>Besar Sudut =</span>
+
+        <div class="fraction">
+            <div class="numerator">
+                Frekuensi × 360°
+            </div>
+
+            <div class="denominator">
+                Jumlah Data
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                <p>
+                    Perhatikan data buah favorit siswa berikut.
+                </p>
+
+                <table class="data-table">
+
+                    <tr>
+                        <th>Buah</th>
+                        <th>Jumlah Siswa</th>
+                    </tr>
+
+                    <tr>
+                        <td>🍎 Apel</td>
+                        <td>5</td>
+                    </tr>
+
+                    <tr>
+                        <td>🥭 Mangga</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <td>🍊 Jeruk</td>
+                        <td>4</td>
+                    </tr>
+
+                    <tr>
+                        <td>🍌 Pisang</td>
+                        <td>4</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Jumlah Data</td>
+                        <td>20</td>
+                    </tr>
+
+                </table>
+
+                <div class="question-box">
+
+                    <strong>
+                        Berapa besar sudut untuk siswa yang suka Apel 🍎 (dalam derajat)?
+                    </strong>
+
+                    <input
+                        type="number"
+                        id="jawabanSudut"
+                        placeholder="Masukkan besar sudut"
+                    >
+
+                    <button onclick="cekSudut()">
+                        Periksa Jawaban
+                    </button>
+
+                    <p id="feedbackSudut"></p>
+
+                </div>
+
+                <button
+                    class="hint-button"
+                    onclick="tampilkanHint('hintSudut')">
+                    💡 Tampilkan Petunjuk
+                </button>
+
+                <div id="hintSudut" class="hint">
+
+    Siswa yang suka apel = 5 siswa<br>
+    Jumlah Data = 20 siswa
+
+    <br><br>
+
+    Maka:
+
+    <div class="formula">
+        <span>Sudut =</span>
+
+        <div class="fraction">
+            <div class="numerator">
+                5 × 360°
+            </div>
+
+            <div class="denominator">
+                20
+            </div>
+        </div>
+
+        <span>= ...</span>
+    </div>
+
+</div>
+
+            </section>
+
+
+            <!-- LANGKAH 4 -->
+            <section class="lesson-step" id="step4">
+
+                <h2>⭕ Membuat Diagram</h2>
+
+                <p>
+                    Sekarang kamu sudah mengetahui besar sudut
+                    untuk siswa yang suka apel. Berikutnya, lakukan langkah yang sama
+                    pada kategori lain.
+                </p>
+
+ <table class="data-table">
+
+                    <tr>
+                        <th>Buah</th>
+                        <th>Jumlah Siswa</th>
+                    </tr>
+
+                    <tr>
+                        <td>🍎 Apel</td>
+                        <td>5</td>
+                    </tr>
+
+                    <tr>
+                        <td>🥭 Mangga</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <td>🍊 Jeruk</td>
+                        <td>4</td>
+                    </tr>
+
+                    <tr>
+                        <td>🍌 Pisang</td>
+                        <td>4</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Jumlah Data</td>
+                        <td>20</td>
+                    </tr>
+
+                </table>
+
+                <div class="result-list">
+
+    <!-- APEL -->
+    <div class="angle-question">
+        <p>🍎 Apel</p>
+
+        <div class="calculation">
+            <div class="fraction">
+                <div class="numerator">
+                    5 × 360°
+                </div>
+                <div class="denominator">
+                    20
+                </div>
+            </div>
+
+            <span>= 90°</span>
+
+        </div>
+    </div>
+
+
+    <!-- MANGGA -->
+    <div class="angle-question">
+        <p>🥭 Mangga</p>
+
+        <div class="calculation">
+
+            <div class="fraction">
+                <div class="numerator">
+                    <input type="number" id="manggaFrekuensi" placeholder="...">
+                    × 360°
+                </div>
+
+                <div class="denominator">
+                    <input type="number" id="manggaTotal" placeholder="...">
+                </div>
+            </div>
+
+            <span>=</span>
+
+            <input type="number" id="manggaSudut" placeholder="...">
+            <span>°</span>
+
+        </div>
+
+        <button onclick="cekSudutLanjutan('mangga', 7, 20, 126)">
+            Cek Jawaban
+        </button>
+
+        <div id="feedbackMangga"></div>
+    </div>
+
+
+    <!-- JERUK -->
+    <div class="angle-question">
+        <p>🍊 Jeruk</p>
+
+        <div class="calculation">
+
+            <div class="fraction">
+                <div class="numerator">
+                    <input type="number" id="jerukFrekuensi" placeholder="...">
+                    × 360°
+                </div>
+
+                <div class="denominator">
+                    <input type="number" id="jerukTotal" placeholder="...">
+                </div>
+            </div>
+
+            <span>=</span>
+
+            <input type="number" id="jerukSudut" placeholder="...">
+            <span>°</span>
+
+        </div>
+
+        <button onclick="cekSudutLanjutan('jeruk', 4, 20, 72)">
+            Cek Jawaban
+        </button>
+
+        <div id="feedbackJeruk"></div>
+    </div>
+
+
+    <!-- PISANG -->
+    <div class="angle-question">
+        <p>🍌 Pisang</p>
+
+        <div class="calculation">
+
+            <div class="fraction">
+                <div class="numerator">
+                    <input type="number" id="pisangFrekuensi" placeholder="...">
+                    × 360°
+                </div>
+
+                <div class="denominator">
+                    <input type="number" id="pisangTotal" placeholder="...">
+                </div>
+            </div>
+
+            <span>=</span>
+
+            <input type="number" id="pisangSudut" placeholder="...">
+            <span>°</span>
+
+        </div>
+
+        <button onclick="cekSudutLanjutan('pisang', 4, 20, 72)">
+            Cek Jawaban
+        </button>
+
+        <div id="feedbackPisang"></div>
+    </div>
+
+</div>
+<button class="hint-button" onclick="tampilkanCatatan()">
+    Catatan
+</button>
+
+<div id="catatanPersentase" class="info-box" style="display: none;">
+
+    🔎 <strong>Perhatikan!</strong>
+
+    <br><br>
+
+    Jika seluruh persentase dijumlahkan:
+
+    <br>
+
+    90° + 126° + 72° + 72°
+    = <strong>360°</strong>
+</div>
+
+<p>
+    Artinya, seluruh data sudah terwakili
+    oleh satu lingkaran penuh.
+</p>
+
+<button onclick="nextStep()">
+    Lihat Diagram Lingkaran →
+</button>
+                
+            </section>
+
+
+           <!-- LANGKAH 5 -->
+<section class="lesson-step" id="step5">
+
+    <h2> Hasil Diagram Lingkaran </h2>
+
+    <p>
+        Kamu sudah menghitung besar sudut setiap kategori.
+        Sekarang perhatikan diagram lingkaran berikut.
+    </p>
+
+    <!-- GAMBAR HASIL DIAGRAM -->
+    <div class="final-chart">
+        <img 
+            src="hasil-diagram.png" 
+            alt="Hasil diagram lingkaran"
+        >
+    </div>
+
+    <div class="info-box">
+
+        💡 <strong>Perhatikan!</strong>
+
+        <p>
+            Besar sudut menunjukkan seberapa besar bagian
+            suatu kategori dalam satu lingkaran.
+        </p>
+
+        <p>
+            🍎 <strong>90°</strong> berarti sektor apel
+            besarnya tepat <strong>¼ lingkaran</strong>.
+        </p>
+
+        <p>
+            🍊 dan 🍌 <strong>72°</strong> berarti sektor Jeruk dan pisang
+            sedikit lebih kecil dari <strong>¼ lingkaran</strong> (90°).
+        </p>
+
+        <p>
+            🥭 <strong>126°</strong> berarti sektor Mangga
+            sedikit lebih kecil dari <strong>½ lingkaran</strong> (180°).
+        </p>
+
+        <p>
+            Semakin besar sudut suatu kategori,
+            semakin besar pula bagian kategori tersebut
+            dalam diagram lingkaran.
+        </p>
+
+    </div>
+
+    <!-- PESAN PENUTUP -->
+    <div class="completion-box">
+
+        <div class="completion-icon">🎉</div>
+
+        <h3>Selamat!</h3>
+
+        <p>
+            Kamu telah menyelesaikan
+            <strong>Materi Interaktif 1</strong>.
+        </p>
+
+        <p>
+            Kamu sudah belajar mengenal diagram lingkaran,
+            menghitung jumlah data, menentukan besar sudut,
+            dan memahami hubungan antara data dengan besar sektor.
+        </p>
+
+    </div>
+
+    <button
+        class="secondary"
+        onclick="location.href='menu.html'">
+        ← Kembali ke Menu
+    </button>
+
+</section>
+
+
+    <script>
+
+        let currentStep = 1;
+
+        function tampilkanStep() {
+
+            document
+                .querySelectorAll(".lesson-step")
+                .forEach(step => {
+                    step.classList.remove("active");
+                });
+
+            document
+                .getElementById("step" + currentStep)
+                .classList.add("active");
+
+            document.getElementById("nomorLangkah")
+                .textContent = currentStep;
+
+            document.getElementById("progress")
+                .style.width = (currentStep / 5 * 100) + "%";
+        }
+
+
+        function nextStep() {
+
+            if (currentStep < 5) {
+
+                currentStep++;
+
+                tampilkanStep();
+
+            }
+
+        }
+
+
+        function cekTotal() {
+
+            const jawaban =
+                document.getElementById("jawabanTotal").value;
+
+            const feedback =
+                document.getElementById("feedbackTotal");
+
+            if (jawaban == 20) {
+
+                feedback.innerHTML =
+                    "🎉 Benar! Jumlah seluruh data adalah 20.";
+
+                setTimeout(() => {
+                    nextStep();
+                }, 1000);
+
+            } else {
+
+                feedback.innerHTML =
+                    "🤔 Belum tepat. Coba jumlahkan kembali semua data.";
+
+            }
+
+        }
+
+
+        function cekSudut() {
+
+            const jawaban =
+                document.getElementById("jawabanSudut").value;
+
+            const feedback =
+                document.getElementById("feedbackSudut");
+
+            if (jawaban == 90) {
+
+                feedback.innerHTML =
+                    "🎉 Benar! Besar sudut Apel adalah 90°.";
+
+                setTimeout(() => {
+                    nextStep();
+                }, 1000);
+
+            } else {
+
+                feedback.innerHTML =
+                    "🤔 Belum tepat. Gunakan rumus yang tersedia.";
+
+            }
+
+        }
+
+
+        function tampilkanHint(id) {
+
+            const hint =
+                document.getElementById(id);
+
+            if (hint.style.display === "block") {
+
+                hint.style.display = "none";
+
+            } else {
+
+                hint.style.display = "block";
+
+            }
+
+        }
+
+
+        function selesaiBelajar() {
+
+            const refleksi =
+                document.getElementById("refleksi").value;
+
+            if (refleksi.trim() === "") {
+
+                alert(
+                    "Tuliskan pemikiranmu terlebih dahulu 😊"
+                );
+
+            } else {
+
+                alert(
+                    "🎉 Hebat! Kamu telah menyelesaikan pembelajaran."
+                );
+
+                location.href = "menu.html";
+
+            }
+
+        }
+
+
+        tampilkanStep();
+
+        function cekSudutLanjutan(nama, frekuensiBenar, totalBenar, sudutBenar) {
+
+    const frekuensi = document.getElementById(nama + "Frekuensi").value;
+    const total = document.getElementById(nama + "Total").value;
+    const sudut = document.getElementById(nama + "Sudut").value;
+
+    const feedback = document.getElementById("feedback" + 
+        nama.charAt(0).toUpperCase() + nama.slice(1));
+
+    if (
+        Number(frekuensi) === frekuensiBenar &&
+        Number(total) === totalBenar &&
+        Number(sudut) === sudutBenar
+    ) {
+
+        feedback.innerHTML =
+            "🎉 Benar! Perhitunganmu tepat.";
+
+        feedback.className = "feedback feedback-benar";
+
+    } else {
+
+        feedback.innerHTML =
+            "💡 Belum tepat. Coba periksa kembali frekuensi, jumlah data, dan hasil sudutnya.";
+
+        feedback.className = "feedback feedback-salah";
+    }
+}
+
+function tampilkanCatatan() {
+
+    const catatan =
+        document.getElementById("catatanPersentase");
+
+    if (catatan.style.display === "none") {
+
+        catatan.style.display = "block";
+
+    } else {
+
+        catatan.style.display = "none";
+
+    }
+}
+
+    </script>
+
+</body>
+</html>
+

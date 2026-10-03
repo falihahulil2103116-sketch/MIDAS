@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MIDAS - Belajar Diagram Lingkaran</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card materi-card">
+
+            <!-- HEADER -->
+            <div class="logo">⭕</div>
+
+            <h1>MIDAS</h1>
+
+            <p class="tagline">
+                Media Interaktif Diagram Lingkaran dengan Scaffolding
+            </p>
+
+           <!-- PENGERTIAN MENURUT AHLI -->
+<div class="expert-box">
+
+    <h3>📖 Apa Itu Diagram Lingkaran?</h3>
+
+    <p>
+        <strong>Sheldon M. Ross</strong> dalam
+        <em>Introductory Statistics</em> menjelaskan bahwa diagram lingkaran
+        (<em>pie chart</em>) merupakan <strong>lingkaran yang dibagi menjadi
+        beberapa sektor</strong>, dengan setiap sektor mewakili kategori data.
+        
+    </p>
+
+</div>
+
+            <!-- PROGRESS -->
+            <div class="progress-container">
+                <div class="progress-text">
+                    Langkah <span id="nomorLangkah">1</span> dari 5
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+
+<!-- LANGKAH 1 -->
+<section class="lesson-step active" id="step1">
+
+    <h2>🔎 Mengamati Data Warna Favorit</h2>
+
+    <p>
+        Perhatikan kumpulan kotak warna berikut!
+        Setiap kotak menunjukkan warna favorit seorang siswa.
+    </p>
+
+    <!-- DATA VISUAL -->
+    <div class="emoji-data">
+
+        🟩 🟦 🟥 🟨 🟦
+        🟥 🟦 🟩 🟥 🟨
+        🟦 🟥 🟩 🟦 🟨
+        🟥 🟦 🟨 🟦 🟩
+
+    </div>
+
+    <div class="info-box">
+        💡 <strong>Petunjuk:</strong><br>
+        Hitung banyaknya setiap warna dengan teliti.
+        Banyaknya suatu warna disebut <strong>frekuensi</strong>.
+    </div>
+
+    <h3>📊 Lengkapi Tabel Berikut</h3>
+
+    <table class="frequency-table">
+
+        <thead>
+            <tr>
+                <th>Warna</th>
+                <th>Frekuensi</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>🟦 Biru</td>
+                <td>
+                    <input
+                        type="number"
+                        id="frekuensiBiru"
+                        min="0"
+                        placeholder="..."
+                    >
+                </td>
+            </tr>
+
+            <tr>
+                <td>🟥 Merah</td>
+                <td>
+                    <input
+                        type="number"
+                        id="frekuensiMerah"
+                        min="0"
+                        placeholder="..."
+                    >
+                </td>
+            </tr>
+
+            <tr>
+                <td>🟩 Hijau</td>
+                <td>
+                    <input
+                        type="number"
+                        id="frekuensiHijau"
+                        min="0"
+                        placeholder="..."
+                    >
+                </td>
+            </tr>
+
+            <tr>
+                <td>🟨 Kuning</td>
+                <td>
+                    <input
+                        type="number"
+                        id="frekuensiKuning"
+                        min="0"
+                        placeholder="..."
+                    >
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <button onclick="cekFrekuensiWarna()">
+        🔍 Periksa Jawaban
+    </button>
+
+    <div id="feedbackFrekuensi" class="feedback-box"></div>
+
+    <button
+        id="lanjutStep1"
+        onclick="nextStep()"
+        style="display: none;">
+        Saya Paham →
+    </button>
+
+</section>
+
+            <!-- LANGKAH 2 -->
+            <section class="lesson-step" id="step2">
+
+                <h2>📊 Hubungan Data dan Lingkaran</h2>
+
+                <p>
+                    Berikut ini adalah data warna favorit 
+                    siswa yang telah disusun dalam tabel.
+                </p>
+
+                <table class="data-table">
+
+                    <tr>
+                        <th>Warna Favorit</th>
+                        <th>Banyak Siswa</th>
+                    </tr>
+
+                    <tr>
+                        <td>🟦 Biru</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <td>🟥 Merah</td>
+                        <td>5</td>
+                    </tr>
+
+                    <tr>
+                        <td>🟩 Hijau</td>
+                        <td>4</td>
+                    </tr>
+
+                    <tr>
+                        <td>🟨 Kuning</td>
+                        <td>4</td>
+                    </tr>
+
+                </table>
+
+                <p>
+                    Sebelum membuat diagram, kita harus mengetahui
+                    jumlah seluruh data.
+                </p>
+
+                <div class="question-box">
+
+                    <strong>Berapa jumlah seluruh data?</strong>
+
+                    <input
+                        type="number"
+                        id="jawabanTotal"
+                        placeholder="Masukkan jawaban"
+                    >
+
+                    <button onclick="cekTotal()">
+                        Periksa Jawaban
+                    </button>
+
+                    <p id="feedbackTotal"></p>
+
+                </div>
+
+                <button
+                    class="hint-button"
+                    onclick="tampilkanHint('hintTotal')">
+                    💡 Butuh Bantuan?
+                </button>
+
+                <div id="hintTotal" class="hint">
+                    Petunjuk: jumlahkan semua frekuensi. Jumlah seluruh data = jumlah seluruh siswa
+                    <br>
+                    5 + 7 + 4 + 4 = ...
+                </div>
+
+            </section>
+
+
+<!-- LANGKAH 3 -->
+<section class="lesson-step" id="step3">
+
+    <h2>📊 Menentukan Persentase</h2>
+
+    <p>
+        Sekarang kita akan menentukan persentase
+        setiap warna berdasarkan jumlah siswa.
+    </p>
+
+
+    <!-- PETUNJUK RUMUS -->
+    <div class="info-box">
+
+        💡 <strong>Petunjuk:</strong>
+
+        <p>
+            Persentase suatu kategori dapat dihitung dengan:
+        </p>
+
+        <div class="formula">
+
+            <span>Persentase =</span>
+
+            <div class="fraction">
+
+                <div class="numerator">
+                    Frekuensi × 100%
+                </div>
+
+                <div class="denominator">
+                    Jumlah Data
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <p>
+        Perhatikan data warna favorit siswa berikut.
+    </p>
+
+
+    <!-- TABEL DATA -->
+    <table class="data-table">
+
+        <tr>
+            <th>Warna Favorit</th>
+            <th>Banyak Siswa</th>
+        </tr>
+
+        <tr>
+            <td>🟦 Biru</td>
+            <td>7</td>
+        </tr>
+
+        <tr>
+            <td>🟥 Merah</td>
+            <td>5</td>
+        </tr>
+
+        <tr>
+            <td>🟩 Hijau</td>
+            <td>4</td>
+        </tr>
+
+        <tr>
+            <td>🟨 Kuning</td>
+            <td>4</td>
+        </tr>
+
+        <tr>
+            <td>Jumlah Data</td>
+            <td>20</td>
+        </tr>
+
+    </table>
+
+
+    <!-- PERTANYAAN -->
+    <div class="question-box">
+
+        <strong>
+            Berapa persentase siswa yang menyukai warna biru (dalam persen)?
+        </strong>
+
+            <input
+            type="number"
+            id="jawabanPersentase"
+            placeholder="Masukkan persentase"
+        >
+
+               <button onclick="cekPersentaseBiru()">
+            Periksa Jawaban
+        </button>
+
+
+        <p id="feedbackPersentase"></p>
+
+    </div>
+
+
+    <!-- PETUNJUK SCAFFOLDING -->
+    <button
+        class="hint-button"
+        onclick="tampilkanHint('hintPersentase')">
+
+        💡 Tampilkan Petunjuk
+
+    </button>
+
+
+    <div id="hintPersentase" class="hint">
+
+        Siswa yang suka biru = <strong>7 siswa</strong><br>
+
+        Jumlah seluruh siswa = <strong>20 siswa</strong>
+
+        <br><br>
+
+        <strong>Langkah 1:</strong> Masukkan data ke dalam rumus.
+
+        <div class="formula">
+
+            <span>Persentase =</span>
+
+            <div class="fraction">
+
+                <div class="numerator">
+                    7 × 100%
+                </div>
+
+                <div class="denominator">
+                    20
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <strong>Langkah 2:</strong> Hitung hasilnya.
+
+        <br><br>
+
+        Persentase warna biru = <strong>...%</strong>
+
+    </div>
+
+
+</section>
+
+
+            <!-- LANGKAH 4 -->
+            <section class="lesson-step" id="step4">
+
+                <h2>⭕ Membuat Diagram</h2>
+
+                <p>
+                    Sekarang kamu sudah mengetahui persentase
+                    siswa yang menyukai warna biru. Berikutnya, lakukan langkah yang sama
+                    pada kategori lain.
+                </p>
+
+ <table class="data-table">
+
+                    <tr>
+                        <th>Warna Favorit</th>
+                        <th>Banyak Siswa</th>
+                    </tr>
+
+                    <tr>
+                        <td>🟦 Biru</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <td>🟥 Merah</td>
+                        <td>5</td>
+                    </tr>
+
+                    <tr>
+                        <td>🟩 Hijau</td>
+                        <td>4</td>
+                    </tr>
+
+                    <tr>
+                        <td>🟨 Kuning</td>
+                        <td>4</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Jumlah Data</td>
+                        <td>20</td>
+                    </tr>
+
+                </table>
+
+                <div class="result-list">
+
+    <!-- BIRU -->
+    <div class="angle-question">
+        <p>🟦 Biru</p>
+
+        <div class="calculation">
+            <div class="fraction">
+                <div class="numerator">
+                    7 × 100%
+                </div>
+                <div class="denominator">
+                    20
+                </div>
+            </div>
+
+            <span>= 35% </span>
+
+        </div>
+    </div>
+
+
+<!-- MERAH -->
+<div class="angle-question">
+
+    <p>🟥 Merah</p>
+
+    <div class="calculation">
+
+        <div class="fraction">
+
+            <div class="numerator">
+                <input
+                    type="number"
+                    id="merahFrekuensi"
+                    placeholder="..."
+                >
+                × 100%
+            </div>
+
+            <div class="denominator">
+                <input
+                    type="number"
+                    id="merahTotal"
+                    placeholder="..."
+                >
+            </div>
+
+        </div>
+
+        <span>=</span>
+
+        <input
+            type="number"
+            id="merahPersentase"
+            placeholder="..."
+        >
+
+        <span>%</span>
+
+    </div>
+
+    <button onclick="cekPersentaseWarna('merah', 5, 20, 25)">
+        Cek Jawaban
+    </button>
+
+    <div id="feedbackMerah"></div>
+
+</div>
+
+
+<!-- HIJAU -->
+<div class="angle-question">
+
+    <p>🟩 Hijau</p>
+
+    <div class="calculation">
+
+        <div class="fraction">
+
+            <div class="numerator">
+                <input
+                    type="number"
+                    id="hijauFrekuensi"
+                    placeholder="..."
+                >
+                × 100%
+            </div>
+
+            <div class="denominator">
+                <input
+                    type="number"
+                    id="hijauTotal"
+                    placeholder="..."
+                >
+            </div>
+
+        </div>
+
+        <span>=</span>
+
+        <input
+            type="number"
+            id="hijauPersentase"
+            placeholder="..."
+        >
+
+        <span>%</span>
+
+    </div>
+
+    <button onclick="cekPersentaseWarna('hijau', 4, 20, 20)">
+        Cek Jawaban
+    </button>
+
+    <div id="feedbackHijau"></div>
+
+</div>
+
+
+<!-- KUNING -->
+<div class="angle-question">
+
+    <p>🟨 Kuning</p>
+
+    <div class="calculation">
+
+        <div class="fraction">
+
+            <div class="numerator">
+                <input
+                    type="number"
+                    id="kuningFrekuensi"
+                    placeholder="..."
+                >
+                × 100%
+            </div>
+
+            <div class="denominator">
+                <input
+                    type="number"
+                    id="kuningTotal"
+                    placeholder="..."
+                >
+            </div>
+
+        </div>
+
+        <span>=</span>
+
+        <input
+            type="number"
+            id="kuningPersentase"
+            placeholder="..."
+        >
+
+        <span>%</span>
+
+    </div>
+
+    <button onclick="cekPersentaseWarna('kuning', 4, 20, 20)">
+        Cek Jawaban
+    </button>
+
+    <div id="feedbackKuning"></div>
+
+</div>
+
+</div>
+<button class="hint-button" onclick="tampilkanCatatan()">
+    Catatan
+</button>
+
+<div id="catatanPersentase" class="info-box" style="display: none;">
+
+    🔎 <strong>Perhatikan!</strong>
+
+    <br><br>
+
+    Jika seluruh persentase dijumlahkan:
+
+    <br>
+
+    35% + 25% + 20% + 20%
+    = <strong>100%</strong>
+
+</div>
+
+<p>
+    Artinya, seluruh data sudah terwakili
+    oleh satu lingkaran penuh.
+</p>
+
+<button onclick="nextStep()">
+    Lihat Diagram Lingkaran →
+</button>
+
+            </section>
+
+
+           <!-- LANGKAH 5 -->
+<section class="lesson-step" id="step5">
+
+    <h2> Hasil Diagram Lingkaran </h2>
+
+    <p>
+        Kamu sudah menghitung persentase siswa yang menyukai warna biru.
+        Sekarang perhatikan diagram lingkaran di bawah ini.
+    </p>
+
+    <!-- GAMBAR HASIL DIAGRAM -->
+    <div class="final-chart">
+        <img 
+            src="hasil-diagram2.png" 
+            alt="Hasil diagram lingkaran"
+        >
+    </div>
+
+    <div class="info-box">
+
+        💡 <strong>Perhatikan!</strong>
+
+        <p>
+            Persentase menunjukkan seberapa besar bagian
+            suatu kategori dalam satu lingkaran.
+        </p>
+
+        <p>
+            🟥 <strong>25%</strong> berarti sektor siswa penyuka biru
+            besarnya tepat <strong>¼ lingkaran</strong>.
+        </p>
+
+        <p>
+            🟩 atau 🟨 <strong>20%</strong> berarti sektor siswa penyuka hijau atau kuning
+            sedikit lebih kecil dari <strong>¼ lingkaran</strong> (25%).
+        </p>
+
+        <p>
+            🟦 <strong>35%</strong> berarti sektor Mangga
+            sedikit lebih kecil dari <strong>½ lingkaran</strong> (50%).
+        </p>
+
+        <p>
+            Semakin besar persentase suatu kategori,
+            semakin besar pula bagian kategori tersebut
+            dalam diagram lingkaran.
+        </p>
+
+    </div>
+
+    <!-- PESAN PENUTUP -->
+    <div class="completion-box">
+
+        <div class="completion-icon">🎉</div>
+
+        <h3>Selamat!</h3>
+
+        <p>
+            Kamu telah menyelesaikan
+            <strong>Materi Interaktif 2</strong>.
+        </p>
+
+        <p>
+            Kamu sudah belajar mengenal diagram lingkaran,
+            menghitung jumlah data, menentukan besar sudut,
+            dan memahami hubungan antara data dengan besar sektor.
+        </p>
+
+    </div>
+
+    <button
+        class="secondary"
+        onclick="location.href='menu.html'">
+        ← Kembali ke Menu
+    </button>
+
+</section>
+
+
+<script>
+
+let currentStep = 1;
+
+
+/* =========================
+   PINDAH LANGKAH
+========================= */
+
+function tampilkanStep() {
+
+    document
+        .querySelectorAll(".lesson-step")
+        .forEach(step => {
+            step.classList.remove("active");
+        });
+
+    document
+        .getElementById("step" + currentStep)
+        .classList.add("active");
+
+    document.getElementById("nomorLangkah")
+        .textContent = currentStep;
+
+    document.getElementById("progress")
+        .style.width = (currentStep / 5 * 100) + "%";
+}
+
+
+function nextStep() {
+
+    if (currentStep < 5) {
+
+        currentStep++;
+
+        tampilkanStep();
+
+    }
+
+}
+
+
+/* =========================
+   LANGKAH 1
+   CEK FREKUENSI WARNA
+========================= */
+
+function cekFrekuensiWarna() {
+
+    const biru =
+        Number(document.getElementById("frekuensiBiru").value);
+
+    const merah =
+        Number(document.getElementById("frekuensiMerah").value);
+
+    const hijau =
+        Number(document.getElementById("frekuensiHijau").value);
+
+    const kuning =
+        Number(document.getElementById("frekuensiKuning").value);
+
+    const feedback =
+        document.getElementById("feedbackFrekuensi");
+
+    const jawabanBenar =
+        biru === 7 &&
+        merah === 5 &&
+        hijau === 4 &&
+        kuning === 4;
+
+    if (jawabanBenar) {
+
+        feedback.innerHTML =
+            "🎉 Semua jawaban benar! Kamu sudah berhasil menemukan frekuensi setiap warna.";
+
+        feedback.className =
+            "feedback-box feedback-benar";
+
+        document.getElementById("lanjutStep1")
+            .style.display = "inline-block";
+
+    } else {
+
+        let pesan =
+            "💡 Masih ada jawaban yang belum tepat.<br><br>";
+
+        if (biru !== 7) {
+            pesan +=
+                "🟦 Coba hitung kembali jumlah kotak biru.<br>";
+        }
+
+        if (merah !== 5) {
+            pesan +=
+                "🟥 Coba hitung kembali jumlah kotak merah.<br>";
+        }
+
+        if (hijau !== 4) {
+            pesan +=
+                "🟩 Coba hitung kembali jumlah kotak hijau.<br>";
+        }
+
+        if (kuning !== 4) {
+            pesan +=
+                "🟨 Coba hitung kembali jumlah kotak kuning.<br>";
+        }
+
+        feedback.innerHTML = pesan;
+
+        feedback.className =
+            "feedback-box feedback-salah";
+
+        document.getElementById("lanjutStep1")
+            .style.display = "none";
+    }
+
+}
+
+
+/* =========================
+   LANGKAH 2
+   CEK JUMLAH DATA
+========================= */
+
+function cekTotal() {
+
+    const jawaban =
+        document.getElementById("jawabanTotal").value;
+
+    const feedback =
+        document.getElementById("feedbackTotal");
+
+
+    if (Number(jawaban) === 20) {
+
+        feedback.innerHTML =
+            "🎉 Benar! Jumlah seluruh data adalah 20.";
+
+        feedback.className =
+            "feedback feedback-benar";
+
+        setTimeout(() => {
+            nextStep();
+        }, 1000);
+
+    } else {
+
+        feedback.innerHTML =
+            "🤔 Belum tepat. Coba jumlahkan kembali semua data.";
+
+        feedback.className =
+            "feedback feedback-salah";
+
+    }
+
+}
+
+
+/* =========================
+   LANGKAH 3
+   CEK PERSENTASE BIRU
+========================= */
+
+function cekPersentaseBiru() {
+
+    const input =
+        document.getElementById("jawabanPersentase");
+
+    const feedback =
+        document.getElementById("feedbackPersentase");
+
+    const jawaban =
+        Number(input.value);
+
+
+    // Jika belum mengisi
+    if (input.value === "") {
+
+        feedback.innerHTML =
+            "💡 Silakan masukkan jawaban terlebih dahulu.";
+
+        feedback.className =
+            "feedback feedback-salah";
+
+        return;
+    }
+
+
+    // Jawaban benar
+    if (jawaban === 35) {
+
+        feedback.innerHTML =
+            "🎉 Benar! 7 dari 20 siswa berarti 35%.";
+
+        feedback.className =
+            "feedback feedback-benar";
+
+        setTimeout(() => {
+            nextStep();
+        }, 1000);
+
+    }
+
+
+    // Jawaban salah
+    else {
+
+        feedback.innerHTML =
+            "🤔 Belum tepat. Coba hitung kembali menggunakan rumus persentase.";
+
+        feedback.className =
+            "feedback feedback-salah";
+
+    }
+
+}
+
+
+/* =========================
+   SCAFFOLDING / PETUNJUK
+========================= */
+
+function tampilkanHint(id) {
+
+    const hint =
+        document.getElementById(id);
+
+
+    if (hint.style.display === "block") {
+
+        hint.style.display = "none";
+
+    } else {
+
+        hint.style.display = "block";
+
+    }
+
+}
+
+
+/* =========================
+   LANGKAH 4
+   CEK PERSENTASE WARNA
+========================= */
+
+function cekPersentaseWarna(
+    nama,
+    frekuensiBenar,
+    totalBenar,
+    persentaseBenar
+) {
+
+    const frekuensi =
+        document.getElementById(
+            nama + "Frekuensi"
+        ).value;
+
+    const total =
+        document.getElementById(
+            nama + "Total"
+        ).value;
+
+    const persentase =
+        document.getElementById(
+            nama + "Persentase"
+        ).value;
+
+
+    const feedback =
+        document.getElementById(
+            "feedback" +
+            nama.charAt(0).toUpperCase() +
+            nama.slice(1)
+        );
+
+    if (
+        Number(frekuensi) === frekuensiBenar &&
+        Number(total) === totalBenar &&
+        Number(persentase) === persentaseBenar
+    ) {
+
+        feedback.innerHTML =
+            "🎉 Benar! Perhitungan persentasenya tepat.";
+
+        feedback.className =
+            "feedback feedback-benar";
+
+    } else {
+
+        let pesan =
+            "💡 Belum tepat. Coba periksa kembali:<br><br>";
+
+
+        if (Number(frekuensi) !== frekuensiBenar) {
+
+            pesan +=
+                "🔹 Frekuensi warna tersebut belum tepat.<br>";
+
+        }
+
+
+        if (Number(total) !== totalBenar) {
+
+            pesan +=
+                "🔹 Jumlah data seharusnya 20.<br>";
+
+        }
+
+
+        if (Number(persentase) !== persentaseBenar) {
+
+            pesan +=
+                "🔹 Coba hitung kembali persentasenya.<br>";
+
+        }
+
+
+        feedback.innerHTML = pesan;
+
+        feedback.className =
+            "feedback feedback-salah";
+
+    }
+
+}
+
+function tampilkanCatatan() {
+
+    const catatan =
+        document.getElementById("catatanPersentase");
+
+    if (catatan.style.display === "none") {
+
+        catatan.style.display = "block";
+
+    } else {
+
+        catatan.style.display = "none";
+
+    }
+}
+
+/* =========================
+   MULAI MEDIA
+========================= */
+
+tampilkanStep();
+
+</script>
+
+</body>
+</html>

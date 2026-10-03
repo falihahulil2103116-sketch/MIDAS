@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MIDAS - Diagram Lingkaran Maker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card maker-card">
+
+        <div class="logo">📊</div>
+
+        <h1>Diagram Lingkaran Maker</h1>
+
+        <p class="tagline">
+            Masukkan data dan lihat diagramnya!
+        </p>
+
+
+        <!-- TABEL DATA -->
+
+        <h2>📝 Masukkan Data</h2>
+
+        <table class="maker-table">
+
+            <thead>
+                <tr>
+                    <th>Kategori</th>
+                    <th>Frekuensi</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody id="dataTable">
+
+                <tr>
+                    <td>
+                        <input type="text"
+                               placeholder="Contoh: Apel">
+                    </td>
+
+                    <td>
+                        <input type="number"
+                               min="0"
+                               placeholder="0"
+                               oninput="buatDiagram()">
+                    </td>
+
+                    <td>
+                        <button class="delete-btn"
+                                onclick="hapusBaris(this)">
+                            ×
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text"
+                               placeholder="Contoh: Mangga">
+                    </td>
+
+                    <td>
+                        <input type="number"
+                               min="0"
+                               placeholder="0"
+                               oninput="buatDiagram()">
+                    </td>
+
+                    <td>
+                        <button class="delete-btn"
+                                onclick="hapusBaris(this)">
+                            ×
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text"
+                               placeholder="Contoh: Jeruk">
+                    </td>
+
+                    <td>
+                        <input type="number"
+                               min="0"
+                               placeholder="0"
+                               oninput="buatDiagram()">
+                    </td>
+
+                    <td>
+                        <button class="delete-btn"
+                                onclick="hapusBaris(this)">
+                            ×
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+        <button class="add-btn"
+                onclick="tambahBaris()">
+            + Tambah Data
+        </button>
+
+
+        <!-- TOTAL -->
+
+        <div class="total-box">
+
+            Total data:
+
+            <strong id="totalData">
+                0
+            </strong>
+
+        </div>
+
+
+        <!-- DIAGRAM -->
+
+        <h2>⭕ Diagram Lingkaran</h2>
+
+        <div class="chart-area">
+
+            <canvas id="pieChart"
+                    width="350"
+                    height="350">
+            </canvas>
+
+        </div>
+
+
+        <!-- HASIL -->
+
+        <h2>📋 Hasil Perhitungan</h2>
+
+        <table class="result-table">
+
+            <thead>
+                <tr>
+                    <th>Kategori</th>
+                    <th>Frekuensi</th>
+                    <th>Persentase</th>
+                    <th>Sudut</th>
+                </tr>
+            </thead>
+
+            <tbody id="resultTable">
+            </tbody>
+
+        </table>
+
+
+        <button onclick="location.href='menu.html'">
+            ← Kembali ke Menu
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function ambilData() {
+
+    const rows =
+        document.querySelectorAll("#dataTable tr");
+
+    let data = [];
+
+    rows.forEach(row => {
+
+        const inputs =
+            row.querySelectorAll("input");
+
+        const kategori =
+            inputs[0].value.trim();
+
+        const frekuensi =
+            Number(inputs[1].value);
+
+        if (kategori !== "" && frekuensi > 0) {
+
+            data.push({
+                kategori: kategori,
+                frekuensi: frekuensi
+            });
+
+        }
+
+    });
+
+    return data;
+}
+
+
+function buatDiagram() {
+
+    const data = ambilData();
+
+    const total =
+        data.reduce(
+            (sum, item) =>
+                sum + item.frekuensi,
+            0
+        );
+
+    document.getElementById("totalData")
+        .textContent = total;
+
+
+    tampilkanHasil(data, total);
+
+    gambarDiagram(data, total);
+}
+
+
+function tampilkanHasil(data, total) {
+
+    const tabel =
+        document.getElementById("resultTable");
+
+    tabel.innerHTML = "";
+
+    if (total === 0) {
+        return;
+    }
+
+    data.forEach(item => {
+
+        const persentase =
+            item.frekuensi / total * 100;
+
+        const sudut =
+            item.frekuensi / total * 360;
+
+        const row =
+            document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${item.kategori}</td>
+
+            <td>${item.frekuensi}</td>
+
+            <td>${persentase.toFixed(1)}%</td>
+
+            <td>${sudut.toFixed(1)}°</td>
+        `;
+
+        tabel.appendChild(row);
+
+    });
+
+}
+
+
+function gambarDiagram(data, total) {
+
+    const canvas =
+        document.getElementById("pieChart");
+
+    const ctx =
+        canvas.getContext("2d");
+
+    const centerX =
+        canvas.width / 2;
+
+    const centerY =
+        canvas.height / 2;
+
+    const radius = 140;
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    if (total === 0) {
+
+        ctx.beginPath();
+
+        ctx.arc(
+            centerX,
+            centerY,
+            radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.stroke();
+
+        return;
+    }
+
+
+    const warna = [
+        "#667eea",
+        "#f59e0b",
+        "#10b981",
+        "#ef4444",
+        "#8b5cf6",
+        "#ec4899",
+        "#14b8a6",
+        "#f97316"
+    ];
+
+
+    let sudutAwal = -Math.PI / 2;
+
+
+    data.forEach((item, index) => {
+
+        const besarSudut =
+            item.frekuensi /
+            total *
+            Math.PI * 2;
+
+        const sudutAkhir =
+            sudutAwal + besarSudut;
+
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            centerX,
+            centerY
+        );
+
+        ctx.arc(
+            centerX,
+            centerY,
+            radius,
+            sudutAwal,
+            sudutAkhir
+        );
+
+        ctx.closePath();
+
+        ctx.fillStyle =
+            warna[index % warna.length];
+
+        ctx.fill();
+
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+
+        sudutAwal = sudutAkhir;
+
+    });
+
+
+    // Lingkaran tengah
+
+    ctx.beginPath();
+
+    ctx.arc(
+        centerX,
+        centerY,
+        45,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.fill();
+
+}
+
+
+function tambahBaris() {
+
+    const tabel =
+        document.getElementById("dataTable");
+
+    const row =
+        document.createElement("tr");
+
+    row.innerHTML = `
+
+        <td>
+            <input type="text"
+                   placeholder="Kategori">
+        </td>
+
+        <td>
+            <input type="number"
+                   min="0"
+                   placeholder="0"
+                   oninput="buatDiagram()">
+        </td>
+
+        <td>
+            <button class="delete-btn"
+                    onclick="hapusBaris(this)">
+                ×
+            </button>
+        </td>
+
+    `;
+
+    tabel.appendChild(row);
+
+}
+
+
+function hapusBaris(button) {
+
+    const jumlahBaris =
+        document.querySelectorAll(
+            "#dataTable tr"
+        ).length;
+
+    if (jumlahBaris <= 1) {
+
+        alert(
+            "Minimal harus ada satu baris data."
+        );
+
+        return;
+    }
+
+    button
+        .closest("tr")
+        .remove();
+
+    buatDiagram();
+
+}
+
+</script>
+
+</body>
+</html>
