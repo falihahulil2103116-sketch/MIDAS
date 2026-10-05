@@ -1108,3 +1108,28 @@ button:hover {
 .soal-text {
     text-align: left;
 }
+
+
+.nama-siswa-section {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.nama-siswa-section label {
+    display: block;
+    font-weight: bold;
+    color: #3a6ed7;
+    margin-bottom: 10px;
+}
+
+.nama-siswa-section input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 16px;
+}
