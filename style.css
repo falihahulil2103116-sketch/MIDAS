@@ -1110,26 +1110,748 @@ button:hover {
 }
 
 
-.nama-siswa-section {
-    background: #ffffff;
-    padding: 22px;
-    border-radius: 18px;
-    margin-bottom: 25px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+/* ==============================
+   RESPONSIVE UNTUK HP
+================================ */
+
+@media (max-width: 600px) {
+
+    /* Ukuran teks umum */
+    body {
+        font-size: 14px;
+    }
+
+    /* Judul utama */
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* Halaman menu */
+    .container {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+
+    .logo {
+        font-size: 48px;
+    }
+
+    .tagline {
+        font-size: 13px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    /* Tombol */
+    button {
+        padding: 13px;
+        font-size: 15px;
+    }
+
+    .menu {
+        gap: 13px;
+    }
+
+    .menu button {
+        padding: 15px;
+        font-size: 15px;
+    }
+
+    /* Halaman materi */
+    .materi-card {
+        padding: 25px 18px;
+        border-radius: 20px;
+    }
+
+    .materi-content {
+        margin: 20px 0;
+    }
+
+    .materi-content h2 {
+        font-size: 18px;
+    }
+
+    .materi-content p,
+    .materi-content li {
+        font-size: 14px;
+    }
+
+    /* Halaman evaluasi */
+    .evaluasi-container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .evaluasi-header {
+        padding: 25px 18px;
+        border-radius: 20px;
+    }
+
+    .evaluasi-header h1 {
+        font-size: 25px;
+    }
+
+    .evaluasi-header p {
+        font-size: 13px;
+    }
+
+    .logo-midas {
+        font-size: 15px;
+    }
+
+    .petunjuk-card {
+        padding: 18px;
+    }
+
+    .petunjuk-card h2 {
+        font-size: 17px;
+    }
+
+    .soal-card {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .soal-card h2 {
+        font-size: 18px;
+    }
+
+    .soal-text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .nomor-soal {
+        font-size: 13px;
+    }
+
+    /* Kolom jawaban */
+    .label-jawaban {
+        font-size: 14px;
+    }
+
+    .jawaban {
+        font-size: 14px;
+        min-height: 110px;
+        padding: 12px;
+    }
+
+    /* Upload gambar */
+    .upload-section {
+        padding: 15px;
+    }
+
+    .upload-title {
+        font-size: 14px;
+    }
+
+    .upload-section p {
+        font-size: 12px;
+    }
+
+    /* Tombol evaluasi */
+    .btn-kembali,
+    .btn-kumpulkan {
+        font-size: 14px;
+        padding: 13px 18px;
+    }
+
+    /* Tabel */
+    .data-table th,
+    .data-table td,
+    .maker-table th,
+    .maker-table td,
+    .result-table th,
+    .result-table td,
+    .frequency-table th,
+    .frequency-table td {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+
+    /* Kotak informasi dan pembahasan */
+    .expert-box {
+        padding: 15px;
+    }
+
+    .expert-box h3 {
+        font-size: 16px;
+    }
+
+    .expert-box p {
+        font-size: 13px;
+    }
+
+    /* Rumus matematika */
+    .formula,
+    .calculation {
+        font-size: 15px;
+        gap: 8px;
+    }
+
+    .fraction {
+        min-width: 0;
+    }
+
+    /* Hasil evaluasi */
+    .completion-box {
+        padding: 18px;
+    }
+
+    .completion-box h3 {
+        font-size: 20px;
+    }
+
 }
 
-.nama-siswa-section label {
-    display: block;
-    font-weight: bold;
-    color: #3a6ed7;
-    margin-bottom: 10px;
+/* =========================================
+   PERAPIAN MATERI MIDAS DI HP
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* Halaman materi */
+    .materi-card {
+        width: 94%;
+        max-width: none;
+        padding: 22px 16px;
+        border-radius: 18px;
+        margin: 15px auto;
+    }
+
+    .materi-content {
+        margin: 18px 0;
+        text-align: left;
+    }
+
+    .materi-content h2 {
+        font-size: 18px;
+        line-height: 1.4;
+        margin-top: 20px;
+        margin-bottom: 9px;
+    }
+
+    .materi-content p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .materi-content ul {
+        padding-left: 20px;
+        line-height: 1.7;
+        font-size: 14px;
+    }
+
+    /* Kotak contoh */
+    .contoh {
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 12px;
+    }
+
+    .contoh h3 {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    /* Kotak informasi */
+    .info-box {
+        padding: 14px;
+        margin: 15px 0;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* Gambar/diagram lingkaran */
+    .visual-circle {
+        width: 190px;
+        height: 190px;
+        margin: 18px auto;
+    }
+
+    .visual-circle img {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Data */
+    .data {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    /* Progress */
+    .progress-container {
+        margin: 15px 0 22px;
+    }
+
+    .progress-text {
+        font-size: 12px;
+    }
+
+    .progress-bar {
+        height: 8px;
+    }
+
+    /* Kotak soal */
+    .question-box {
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 12px;
+    }
+
+    .question-box p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .question-box input {
+        font-size: 14px;
+        padding: 11px;
+    }
+
+    /* Tombol */
+    .materi-card button {
+        font-size: 14px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    /* Tombol hint */
+    .hint-button {
+        padding: 11px;
+    }
+
+    /* Petunjuk/hint */
+    .hint {
+        padding: 12px;
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* Hasil */
+    .result-list {
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 12px;
+        font-size: 14px;
+    }
+
+    .result-list p {
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+
+    /* Kotak refleksi */
+    .reflection-box {
+        margin: 18px 0;
+    }
+
+    .reflection-box textarea {
+        min-height: 100px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* Rumus */
+    .formula {
+        font-size: 16px;
+        gap: 6px;
+        margin: 15px 0;
+    }
+
+    /* Perhitungan */
+    .calculation {
+        font-size: 15px;
+        gap: 6px;
+    }
+
+    .fraction {
+        min-width: 0;
+    }
+
+    .numerator,
+    .denominator {
+        padding: 4px 6px;
+    }
+
+    .numerator input,
+    .denominator input {
+        width: 45px;
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .calculation > input {
+        width: 55px;
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    /* Tabel */
+    .data-table {
+        font-size: 13px;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 7px 5px;
+    }
+
+    /* Kotak penjelasan ahli */
+    .expert-box {
+        margin: 18px 0;
+        padding: 13px 15px;
+    }
+
+    .expert-box h3 {
+        font-size: 15px;
+    }
+
+    .expert-box p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* Data berbentuk emoji */
+    .emoji-data {
+        max-width: 100%;
+        padding: 15px;
+        font-size: 24px;
+        line-height: 1.8;
+        letter-spacing: 3px;
+    }
+
+    /* Tombol menu informasi */
+    .info-menu-btn {
+        width: 44px;
+        height: 44px;
+        top: 12px;
+        right: 12px;
+        font-size: 22px;
+    }
+
+    /* Panel informasi */
+    .info-panel {
+        width: 90%;
+    }
+
+    .info-panel-content {
+        padding: 16px;
+    }
+
+}
+/* =========================================
+   PERAPIAN INDEX & MENU MIDAS DI HP
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* ===== HALAMAN BERANDA / INDEX ===== */
+
+    .container {
+        width: 100%;
+        max-width: 400px;
+        padding: 12px;
+    }
+
+    .card {
+        padding: 25px 20px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+        font-size: 42px;
+        margin-bottom: 6px;
+    }
+
+    h1 {
+        font-size: 28px;
+        line-height: 1.2;
+        margin-bottom: 6px;
+    }
+
+    .tagline {
+        font-size: 13px;
+        margin-bottom: 22px;
+        line-height: 1.5;
+    }
+
+    h2 {
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 9px;
+    }
+
+    .description {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* ===== INPUT NAMA ===== */
+
+    input {
+        padding: 11px 12px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    /* ===== TOMBOL UMUM ===== */
+
+    button {
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+
+    /* ===== MENU UTAMA ===== */
+
+    .menu {
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .menu button {
+        padding: 13px 15px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+
+    /* ===== JARAK ANTAR BAGIAN ===== */
+
+    .menu + * {
+        margin-top: 15px;
+    }
+
+
+    /* ===== SUPAYA HALAMAN TIDAK TERLALU "MENENGAH" ===== */
+
+    body {
+        padding: 12px 0;
+    }
+
+
+    /* ===== TOMBOL INFORMASI ===== */
+
+    .info-menu-btn {
+        width: 42px;
+        height: 42px;
+        top: 10px;
+        right: 10px;
+        font-size: 21px;
+        border-radius: 10px;
+    }
+
+}
+/* =========================================
+   PERAPIAN DIAGRAM MAKER DI HP
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* Kartu utama Diagram Maker */
+    .maker-card {
+        width: 94%;
+        max-width: none;
+        padding: 20px 14px;
+        border-radius: 18px;
+        margin: 15px auto;
+    }
+
+    /* Judul */
+    .maker-card h1 {
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+    .maker-card h2 {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .maker-card p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* Tombol tambah data */
+    .add-btn {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    /* Tabel maker */
+    .maker-table {
+        width: 100%;
+        margin: 15px 0;
+        font-size: 12px;
+    }
+
+    .maker-table th,
+    .maker-table td {
+        padding: 7px 4px;
+        white-space: nowrap;
+    }
+
+    .maker-table th {
+        font-size: 12px;
+    }
+
+    /* Input dalam tabel */
+    .maker-table input {
+        width: 65px;
+        padding: 7px 5px;
+        margin: 0;
+        font-size: 13px;
+        border-radius: 7px;
+    }
+
+    /* Tombol hapus */
+    .delete-btn {
+        width: auto;
+        min-width: 38px;
+        padding: 7px 9px;
+        font-size: 12px;
+        border-radius: 7px;
+    }
+
+    /* Kotak total */
+    .total-box {
+        padding: 12px;
+        margin: 15px 0;
+        font-size: 15px;
+        border-radius: 10px;
+        line-height: 1.5;
+    }
+
+    /* Area diagram */
+    .chart-area {
+        margin: 18px 0;
+        padding: 5px;
+    }
+
+    #pieChart {
+        width: 220px !important;
+        height: 220px !important;
+        max-width: 100%;
+    }
+
+    /* Tabel hasil */
+    .result-table {
+        width: 100%;
+        font-size: 12px;
+        margin: 15px 0;
+    }
+
+    .result-table th,
+    .result-table td {
+        padding: 7px 4px;
+    }
+
+    /* Tombol-tombol bawah */
+    .maker-card button {
+        font-size: 14px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
 }
 
-.nama-siswa-section input {
-    width: 100%;
+/* =========================================
+   AGAR GAMBAR TIDAK KELUAR DARI CARD
+========================================= */
+
+img {
+    max-width: 100%;
+    height: auto;
     box-sizing: border-box;
-    padding: 12px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    font-size: 16px;
+}
+
+/* Gambar di dalam card */
+.card img,
+.materi-card img,
+.maker-card img,
+.evaluasi-container img,
+.soal-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Khusus HP */
+@media (max-width: 600px) {
+
+    .card img,
+    .materi-card img,
+    .maker-card img,
+    .evaluasi-container img,
+    .soal-card img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* Diagram/gambar visual */
+    .visual-circle {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .visual-circle img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Gambar diagram akhir */
+    .final-chart {
+        max-width: 100%;
+        padding: 8px;
+        margin: 18px auto;
+    }
+
+    .final-chart img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+    }
+
+    /* Area chart */
+    .chart-area {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    #pieChart {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
 }
