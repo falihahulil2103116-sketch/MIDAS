@@ -1128,17 +1128,31 @@ button:hover {
        CARD UTAMA
     ========================= */
 
+    @media (max-width: 600px) {
+
+    body {
+        display: block;
+        min-height: 100vh;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+        padding: 12px;
+    }
+
     .card,
     .materi-card,
     .maker-card {
-        width: 96%;
+        width: 100%;
         max-width: none;
-        margin: 15px auto;
+        margin: 15px 0;
         padding: 20px 14px;
         border-radius: 18px;
         box-sizing: border-box;
     }
 
+}
 
     /* =========================
        TEKS UMUM
