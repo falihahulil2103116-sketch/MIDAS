@@ -1110,7 +1110,7 @@ button:hover {
 }
 
 /* =========================================
-   RESPONSIVE MIDAS - GAYA SEPERTI EVALUASI
+   RESPONSIVE MIDAS - FINAL HP
 ========================================= */
 
 @media (max-width: 600px) {
@@ -1124,21 +1124,24 @@ button:hover {
         padding: 0;
     }
 
-    /* Semua card utama */
+    /* =========================
+       CARD UTAMA
+    ========================= */
+
     .card,
     .materi-card,
     .maker-card {
-        width: 94%;
-        max-width: 900px;
-        margin: 20px auto;
-        padding: 20px 18px;
+        width: 96%;
+        max-width: none;
+        margin: 15px auto;
+        padding: 20px 14px;
         border-radius: 18px;
         box-sizing: border-box;
     }
 
 
     /* =========================
-       TEKS
+       TEKS UMUM
     ========================= */
 
     h1 {
@@ -1159,7 +1162,7 @@ button:hover {
     p,
     li {
         font-size: 14px;
-        line-height: 1.6;
+        line-height: 1.65;
     }
 
 
@@ -1168,54 +1171,64 @@ button:hover {
     ========================= */
 
     .materi-content {
-        margin: 18px 0;
+        margin: 15px 0;
+        width: 100%;
     }
 
     .materi-content h2 {
         font-size: 18px;
+        margin-top: 18px;
+        margin-bottom: 8px;
     }
 
     .materi-content p,
     .materi-content li {
         font-size: 14px;
-        line-height: 1.6;
+        line-height: 1.65;
     }
 
+    /* Kotak-kotak di dalam materi */
     .contoh,
     .info-box,
     .question-box,
     .result-list,
     .expert-box,
     .completion-box {
-        padding: 15px;
-        border-radius: 12px;
-        margin: 15px 0;
-        box-sizing: border-box;
+        width: 100%;
         max-width: 100%;
+        padding: 13px;
+        margin: 14px 0;
+        border-radius: 12px;
+        box-sizing: border-box;
+    }
+
+    .contoh p,
+    .info-box p,
+    .question-box p,
+    .result-list p,
+    .expert-box p {
+        font-size: 14px;
+        line-height: 1.6;
     }
 
 
     /* =========================
-       SEMUA GAMBAR
+       GAMBAR
     ========================= */
 
     .card img,
     .materi-card img,
     .maker-card img {
-        display: block;
         max-width: 100%;
-        width: auto;
         height: auto;
         object-fit: contain;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     .visual-circle {
-        width: 190px;
-        height: 190px;
+        width: 180px;
+        height: 180px;
         max-width: 100%;
-        margin: 18px auto;
+        margin: 16px auto;
     }
 
     .visual-circle img {
@@ -1227,8 +1240,8 @@ button:hover {
     .final-chart {
         width: 100%;
         max-width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
+        padding: 5px;
+        margin: 16px auto;
     }
 
     .final-chart img {
@@ -1245,7 +1258,7 @@ button:hover {
     .materi-card button,
     .maker-card button {
         font-size: 14px;
-        padding: 12px;
+        padding: 11px 12px;
         border-radius: 10px;
     }
 
@@ -1263,12 +1276,12 @@ button:hover {
     .maker-table td,
     .result-table th,
     .result-table td {
-        padding: 7px 5px;
+        padding: 6px 4px;
     }
 
     .maker-table input {
-        width: 65px;
-        padding: 7px 5px;
+        width: 60px;
+        padding: 6px 4px;
         font-size: 13px;
     }
 
@@ -1277,7 +1290,7 @@ button:hover {
         max-width: 100%;
         overflow: hidden;
         box-sizing: border-box;
-        margin: 18px auto;
+        margin: 16px auto;
     }
 
     #pieChart {
@@ -1287,15 +1300,15 @@ button:hover {
 
 
     /* =========================
-       DATA / EMOJI
+       DATA EMOJI
     ========================= */
 
     .emoji-data {
         width: 100%;
         max-width: 100%;
-        padding: 15px;
-        font-size: 24px;
-        letter-spacing: 3px;
+        padding: 12px;
+        font-size: 23px;
+        letter-spacing: 2px;
         box-sizing: border-box;
     }
 
@@ -1307,7 +1320,7 @@ button:hover {
     .formula,
     .calculation {
         font-size: 15px;
-        gap: 7px;
+        gap: 6px;
         max-width: 100%;
     }
 
