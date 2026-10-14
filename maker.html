@@ -43,7 +43,8 @@
                 <tr>
                     <td>
                         <input type="text"
-                               placeholder="Contoh: Apel">
+                               placeholder="Contoh: Apel"
+                               oninput="buatDiagram()">
                     </td>
 
                     <td>
@@ -64,7 +65,8 @@
                 <tr>
                     <td>
                         <input type="text"
-                               placeholder="Contoh: Mangga">
+                               placeholder="Contoh: Mangga"
+                               oninput="buatDiagram()">
                     </td>
 
                     <td>
@@ -85,7 +87,8 @@
                 <tr>
                     <td>
                         <input type="text"
-                               placeholder="Contoh: Jeruk">
+                               placeholder="Contoh: Jeruk"
+                               oninput="buatDiagram()">
                     </td>
 
                     <td>
@@ -266,46 +269,26 @@ function tampilkanHasil(data, total) {
 }
 
 
+
 function gambarDiagram(data, total) {
+    const canvas = document.getElementById("pieChart");
+    const ctx = canvas.getContext("2d");
 
-    const canvas =
-        document.getElementById("pieChart");
-
-    const ctx =
-        canvas.getContext("2d");
-
-    const centerX =
-        canvas.width / 2;
-
-    const centerY =
-        canvas.height / 2;
-
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
     const radius = 140;
 
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Jika belum ada data
     if (total === 0) {
-
         ctx.beginPath();
-
-        ctx.arc(
-            centerX,
-            centerY,
-            radius,
-            0,
-            Math.PI * 2
-        );
-
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = "#cbd5e1";
+        ctx.lineWidth = 2;
         ctx.stroke();
-
         return;
     }
-
 
     const warna = [
         "#667eea",
@@ -318,28 +301,19 @@ function gambarDiagram(data, total) {
         "#f97316"
     ];
 
-
     let sudutAwal = -Math.PI / 2;
 
-
     data.forEach((item, index) => {
-
         const besarSudut =
-            item.frekuensi /
-            total *
-            Math.PI * 2;
+            (item.frekuensi / total) * Math.PI * 2;
 
-        const sudutAkhir =
-            sudutAwal + besarSudut;
+        const sudutAkhir = sudutAwal + besarSudut;
+        const sudutTengah =
+            sudutAwal + besarSudut / 2;
 
-
+        // Menggambar irisan diagram lingkaran
         ctx.beginPath();
-
-        ctx.moveTo(
-            centerX,
-            centerY
-        );
-
+        ctx.moveTo(centerX, centerY);
         ctx.arc(
             centerX,
             centerY,
@@ -347,41 +321,83 @@ function gambarDiagram(data, total) {
             sudutAwal,
             sudutAkhir
         );
-
         ctx.closePath();
 
-        ctx.fillStyle =
-            warna[index % warna.length];
-
+        ctx.fillStyle = warna[index % warna.length];
         ctx.fill();
 
         ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 3;
         ctx.stroke();
 
+        // Menghitung posisi label di dalam irisan
+        const jarakLabel = radius * 0.62;
+        const xLabel =
+            centerX + Math.cos(sudutTengah) * jarakLabel;
+        const yLabel =
+            centerY + Math.sin(sudutTengah) * jarakLabel;
+
+        const persentase =
+            ((item.frekuensi / total) * 100).toFixed(1) + "%";
+
+        // Ukuran tulisan menyesuaikan lebar irisan
+        const lebarIrisan =
+            2 * jarakLabel * Math.sin(
+                Math.min(besarSudut, Math.PI) / 2
+            );
+
+        let ukuranFont = Math.min(
+            14,
+            Math.max(8, lebarIrisan / 7)
+        );
+
+        const nama = item.kategori;
+        const teksBaris = [nama, persentase];
+
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "#ffffff";
+        ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
+        ctx.shadowBlur = 2;
+
+        // Mengecilkan font jika nama kategori terlalu panjang
+        while (ukuranFont > 7) {
+            ctx.font = `bold ${ukuranFont}px Arial`;
+
+            const lebarTeks = Math.max(
+                ...teksBaris.map(teks => ctx.measureText(teks).width)
+            );
+
+            if (lebarTeks <= lebarIrisan * 0.88) {
+                break;
+            }
+
+            ukuranFont -= 1;
+        }
+
+        ctx.font = `bold ${ukuranFont}px Arial`;
+
+        // Nama kategori dan persentase dalam dua baris
+        ctx.fillText(
+            nama,
+            xLabel,
+            yLabel - ukuranFont * 0.55,
+            Math.max(10, lebarIrisan * 0.88)
+        );
+
+        ctx.fillText(
+            persentase,
+            xLabel,
+            yLabel + ukuranFont * 0.7,
+            Math.max(10, lebarIrisan * 0.88)
+        );
+
+        ctx.shadowBlur = 0;
 
         sudutAwal = sudutAkhir;
-
     });
-
-
-    // Lingkaran tengah
-
-    ctx.beginPath();
-
-    ctx.arc(
-        centerX,
-        centerY,
-        45,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fillStyle = "#ffffff";
-
-    ctx.fill();
-
 }
+
 
 
 function tambahBaris() {
