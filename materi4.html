@@ -1,0 +1,720 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aktivitas 1 - MIDAS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px 12px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-image: url("wallpaper4.jpg");
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 760px;
+    margin: auto;
+}
+
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #667085;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 21px;
+    margin-top: 28px;
+    color: #315da8;
+}
+
+h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.diagram-box {
+    background: #f7f8ff;
+    padding: 20px 10px;
+    border-radius: 18px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pie {
+    width: min(270px, 75vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin: 15px auto;
+    position: relative;
+    background: conic-gradient(
+        from 0deg,
+        #f59e0b 0% 12.5%,
+        #647ce8 12.5% 37.5%,
+        #10b981 37.5% 60%,
+        #9b78df 60% 100%
+    );
+    border: 3px solid white;
+}
+
+.pie-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(0,0,0,.45);
+}
+
+.label-mat {
+    left: 55%;
+    top: 7%;
+}
+
+.label-ing {
+    left: 79%;
+    top: 43%;
+}
+
+.label-indo {
+    left: 38%;
+    top: 78%;
+}
+
+.label-ipa {
+    left: 29%;
+    top: 36%;
+}
+
+.diagram-note {
+    font-size: 13px;
+    color: #667085;
+}
+
+.info-box {
+    background: #edf4ff;
+    border-left: 4px solid #477bd1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+}
+
+.question {
+    border: 1px solid #e1e7f0;
+    border-radius: 15px;
+    padding: 18px;
+    margin: 18px 0;
+}
+
+.formula {
+    margin: 14px 0;
+    line-height: 2.4;
+    overflow-wrap: anywhere;
+}
+
+.answer {
+    display: inline-block;
+    width: 82px;
+    max-width: 100%;
+    padding: 8px 5px;
+    border: 2px solid #b9c9e5;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    background: #fff;
+    color: #222;
+}
+
+.answer:focus {
+    outline: 2px solid #5c8ee6;
+    border-color: #5c8ee6;
+}
+
+.answer.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+}
+
+.answer.wrong {
+    border-color: #dc2626;
+    background: #fff7f7;
+}
+
+.hint {
+    display: none;
+    background: #fff8e6;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+    color: #754b00;
+    font-size: 14px;
+}
+
+.hint.show {
+    display: block;
+}
+
+.feedback {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.feedback.good {
+    color: #16803d;
+}
+
+.feedback.bad {
+    color: #c62828;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 17px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.check-btn {
+    background: #3a9fce;
+    color: white;
+}
+
+.hint-btn {
+    background: #fff0bd;
+    color: #6b4c00;
+}
+
+.main-btn {
+    width: 100%;
+    margin-top: 25px;
+    background: #3aa8d7;
+    color: white;
+    padding: 16px;
+    font-size: 17px;
+}
+
+.reset-btn {
+    background: #edf0f5;
+    color: #334155;
+}
+
+.score-box {
+    display: none;
+    padding: 18px;
+    background: #e9f8ee;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.score-box.show {
+    display: block;
+}
+
+.footer-note {
+    font-size: 13px;
+    color: #667085;
+    margin-top: 25px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    .card {
+        padding: 20px 15px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    .question {
+        padding: 14px 12px;
+    }
+
+    .formula {
+        font-size: 15px;
+        line-height: 2.3;
+    }
+
+    .answer {
+        width: 72px;
+        font-size: 16px;
+        padding: 7px 3px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    .pie-label {
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="card">
+
+<h1>📊 Aktivitas 1</h1>
+<p class="subtitle">
+Membaca dan Menginterpretasikan Data Berbentuk Diagram Lingkaran
+</p>
+
+<div class="info-box">
+<strong>Petunjuk pengerjaan</strong>
+<p>
+Amati diagram lingkaran berikut. Lengkapi setiap kotak dengan
+bilangan yang tepat. Gunakan garis miring untuk mewakili operasi hitung pembagian. Setelah selesai, tekan tombol
+<strong>Periksa Jawaban</strong>.
+</p>
+</div>
+
+<h2>1. Mengamati Diagram</h2>
+
+<p>
+Perhatikan diagram kegemaran 80 siswa terhadap mata pelajaran
+di sekolah berikut.
+</p>
+
+<div class="diagram-box">
+<div class="pie" role="img"
+aria-label="Diagram lingkaran kegemaran mata pelajaran">
+    <span class="pie-label label-mat">Matematika<br>12,5%</span>
+    <span class="pie-label label-ing">Bahasa<br>Inggris<br>25%</span>
+    <span class="pie-label label-indo">Bahasa<br>Indonesia</span>
+    <span class="pie-label label-ipa">IPA<br>40%</span>
+</div>
+<div class="diagram-note">
+Jumlah seluruh siswa = 80 orang
+</div>
+</div>
+
+<h2>2. Membaca Diagram Lingkaran</h2>
+
+<div class="question" id="q1">
+<h3>a. Banyak siswa yang gemar IPA</h3>
+
+<p>Persentase juring IPA adalah 40%.</p>
+<p>Jumlah siswa adalah 80 orang.</p>
+<p>Banyak siswa yang gemar IPA:</p>
+
+<div class="formula">
+B<sub>IPA</sub> =
+40% × 80 =
+40/100 × 80 =
+<input class="answer" data-answer="32"
+aria-label="Hasil banyak siswa yang gemar IPA"
+inputmode="decimal">
+</div>
+
+<p>Jadi, banyak siswa yang gemar IPA adalah
+<input class="answer" data-answer="32"
+aria-label="Jawaban akhir banyak siswa gemar IPA"
+inputmode="decimal"> orang.</p>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q1')">
+Periksa Jawaban
+</button>
+<button class="hint-btn" onclick="petunjuk('h1')">
+Petunjuk
+</button>
+</div>
+
+<div class="hint" id="h1">
+Persentase diubah menjadi pecahan berpenyebut 100.
+Kemudian kalikan 40/100 dengan 80.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+<div class="question" id="q2">
+<h3>b. Banyak siswa yang gemar Matematika</h3>
+
+<p>Persentase juring Matematika adalah</p>
+
+<div class="formula">
+<input class="answer" data-answer="12,5"
+aria-label="Persentase Matematika"
+inputmode="decimal"> %.
+</div>
+
+<p>Banyak siswa yang gemar Matematika:</p>
+
+<div class="formula">
+B<sub>MAT</sub> =
+<input class="answer" data-answer="12,5"
+aria-label="Persentase untuk perhitungan Matematika"
+inputmode="decimal"> % × 80 =
+12,5/100 × 80 =
+<input class="answer" data-answer="10"
+aria-label="Hasil perhitungan Matematika"
+inputmode="decimal">
+</div>
+
+<p>Jadi, banyak siswa yang gemar Matematika adalah
+<input class="answer" data-answer="10"
+aria-label="Jawaban akhir banyak siswa gemar Matematika"
+inputmode="decimal"> orang.</p>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q2')">
+Periksa Jawaban
+</button>
+<button class="hint-btn" onclick="petunjuk('h2')">
+Petunjuk
+</button>
+</div>
+
+<div class="hint" id="h2">
+Persentase Matematika dapat diperoleh dari
+banyak siswa yang gemar Matematika dibagi jumlah seluruh siswa,
+kemudian dikalikan 100%. Banyak siswanya adalah 10 orang.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+<h2>3. Menginterpretasikan Diagram Lingkaran</h2>
+
+<div class="question" id="q3">
+<h3>a. Selisih banyak siswa yang gemar IPA dan Bahasa Inggris</h3>
+
+<p>
+Juring Bahasa Inggris menempati seperempat lingkaran
+sehingga persentase Bahasa Inggris adalah 25%.
+</p>
+
+<p>Selisih antara persentase juring IPA dan Bahasa Inggris:</p>
+
+<div class="formula">
+Selisih Persentase = 40% − 25% =
+<input class="answer" data-answer="15"
+aria-label="Selisih persentase IPA dan Bahasa Inggris"
+inputmode="decimal"> %.
+</div>
+
+<p>Selisih antara banyak siswa yang gemar IPA dan Bahasa Inggris:</p>
+
+<div class="formula">
+Selisih =
+<input class="answer" data-answer="15"
+aria-label="Persentase untuk menghitung selisih siswa"
+inputmode="decimal"> % × 80 =
+15/100 × 80 =
+<input class="answer" data-answer="12"
+aria-label="Hasil selisih banyak siswa"
+inputmode="decimal">
+</div>
+
+<p>Jadi, selisih banyak siswa yang gemar IPA dan Bahasa Inggris adalah
+<input class="answer" data-answer="12"
+aria-label="Jawaban akhir selisih banyak siswa"
+inputmode="decimal"> orang.</p>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q3')">
+Periksa Jawaban
+</button>
+<button class="hint-btn" onclick="petunjuk('h3')">
+Petunjuk
+</button>
+</div>
+
+<div class="hint" id="h3">
+Kurangkan persentase IPA dengan persentase Bahasa Inggris.
+Setelah mendapatkan selisih persentase, kalikan dengan 80 siswa.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+<div class="question" id="q4">
+<h3>b. Banyak siswa yang gemar bahasa</h3>
+
+<p>
+Banyak siswa yang gemar bahasa merupakan jumlah siswa
+yang gemar Bahasa Inggris dan Bahasa Indonesia.
+</p>
+
+<p>Persentase juring Bahasa Inggris dan Bahasa Indonesia:</p>
+
+<div class="formula">
+Persentase = 100% − 40% − 12,5% =
+<input class="answer" data-answer="47,5"
+aria-label="Persentase gabungan Bahasa Inggris dan Bahasa Indonesia"
+inputmode="decimal"> %.
+</div>
+
+<p>Banyak siswa yang gemar bahasa:</p>
+
+
+<div class="formula">
+<input class="answer" data-answer="47,5"
+aria-label="Persentase untuk menghitung banyak siswa yang gemar bahasa"
+inputmode="decimal"> % × 80 =
+
+<input class="answer" data-answer="47,5"
+aria-label="Pembilang pecahan persentase"
+inputmode="decimal">
+/
+<input class="answer" data-answer="100"
+aria-label="Penyebut pecahan persentase"
+inputmode="decimal">
+× 80 =
+
+<input class="answer" data-answer="38"
+aria-label="Hasil banyak siswa yang gemar bahasa"
+inputmode="decimal">
+</div>
+
+<p>Jadi, banyak siswa yang gemar bahasa adalah
+<input class="answer" data-answer="38"
+aria-label="Jawaban akhir banyak siswa yang gemar bahasa"
+inputmode="decimal"> orang.</p>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q4')">
+Periksa Jawaban
+</button>
+<button class="hint-btn" onclick="petunjuk('h4')">
+Petunjuk
+</button>
+</div>
+
+<div class="hint" id="h4">
+Jumlah persentase seluruh diagram adalah 100%.
+Kurangkan 100% dengan persentase IPA dan Matematika,
+kemudian kalikan hasilnya dengan 80 siswa.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+
+<h2>4. Menyimpulkan</h2>
+
+<div class="question" id="q5">
+    <p>
+        Jadi, dapat disimpulkan rumus untuk mencari frekuensi
+        dari suatu kategori jika persentase juring diketahui adalah:
+    </p>
+
+    <div class="formula">
+        Frekuensi =
+        <input class="answer"
+            data-answer="persentase"
+            aria-label="Nama besaran pertama dalam rumus frekuensi"
+            placeholder="..."
+            style="width: 125px;"
+            type="text">
+        / 100 ×
+        <input class="answer"
+            data-answer="jumlah data"
+            aria-label="Nama besaran kedua dalam rumus frekuensi"
+            placeholder="..."
+            style="width: 100px;"
+            type="text">
+    </div>
+
+    <div class="button-row">
+        <button class="check-btn" onclick="periksa('q5')">
+            Periksa Jawaban
+        </button>
+        <button class="hint-btn" onclick="petunjuk('h5')">
+            Petunjuk
+        </button>
+    </div>
+
+    <div class="hint" id="h5">
+        Pikirkan kembali cara menghitung banyak siswa pada
+        kegiatan sebelumnya. Persentase dibagi 100, lalu
+        dikalikan dengan jumlah seluruh siswa.
+    </div>
+
+    <div class="feedback" aria-live="polite"></div>
+</div>
+
+<div class="score-box" id="scoreBox" aria-live="polite">
+<h3>Hasil Latihan</h3>
+<p id="scoreText"></p>
+<p>Periksa kembali kotak yang belum tepat, lalu coba lagi.</p>
+</div>
+
+<button class="main-btn" onclick="periksaSemua()">
+Periksa Semua Jawaban
+</button>
+
+<button class="main-btn reset-btn" onclick="resetLatihan()">
+Ulangi Latihan
+</button>
+
+<button class="main-btn" onclick="location.href='menu.html'">
+← Kembali ke Menu
+</button>
+
+</div>
+</div>
+
+<script>
+function normalisasi(nilai) {
+    return nilai.trim()
+        .replace(/\s/g, "")
+        .replace(",", ".")
+        .toLowerCase();
+}
+
+function periksa(id) {
+    const bagian = document.getElementById(id);
+    const input = bagian.querySelectorAll(".answer");
+    const feedback = bagian.querySelector(".feedback");
+
+    let benar = 0;
+
+    input.forEach(kotak => {
+        const jawaban = normalisasi(kotak.value);
+        const kunci = normalisasi(kotak.dataset.answer);
+
+        kotak.classList.remove("correct", "wrong");
+
+        if (jawaban !== "" && jawaban === kunci) {
+            kotak.classList.add("correct");
+            benar++;
+        } else {
+            kotak.classList.add("wrong");
+        }
+    });
+
+    if (benar === input.length) {
+        feedback.textContent = "Benar! Semua jawaban pada bagian ini tepat.";
+        feedback.className = "feedback good";
+    } else {
+        feedback.textContent =
+            benar + " dari " + input.length +
+            " kotak benar. Periksa kembali jawabanmu atau buka petunjuk.";
+        feedback.className = "feedback bad";
+    }
+}
+
+function petunjuk(id) {
+    document.getElementById(id).classList.toggle("show");
+}
+
+function periksaSemua() {
+    const bagian = ["q1", "q2", "q3", "q4"];
+    let benar = 0;
+    let total = 0;
+
+    bagian.forEach(id => {
+        const soal = document.getElementById(id);
+        const input = soal.querySelectorAll(".answer");
+
+        input.forEach(kotak => {
+            total++;
+            const jawaban = normalisasi(kotak.value);
+            const kunci = normalisasi(kotak.dataset.answer);
+
+            kotak.classList.remove("correct", "wrong");
+
+            if (jawaban !== "" && jawaban === kunci) {
+                benar++;
+                kotak.classList.add("correct");
+            } else {
+                kotak.classList.add("wrong");
+            }
+        });
+
+        const feedback = soal.querySelector(".feedback");
+        const benarBagian = [...input].every(kotak =>
+            normalisasi(kotak.value) ===
+            normalisasi(kotak.dataset.answer)
+        );
+
+        feedback.textContent = benarBagian
+            ? "Benar! Semua jawaban pada bagian ini tepat."
+            : "Masih ada jawaban yang perlu diperbaiki.";
+
+        feedback.className = benarBagian
+            ? "feedback good"
+            : "feedback bad";
+    });
+
+    const scoreBox = document.getElementById("scoreBox");
+    scoreBox.classList.add("show");
+    document.getElementById("scoreText").textContent =
+        "Jawaban benar: " + benar + " dari " + total +
+        " kotak (" + Math.round(benar / total * 100) + "%).";
+
+    scoreBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+function resetLatihan() {
+    document.querySelectorAll(".answer").forEach(kotak => {
+        kotak.value = "";
+        kotak.classList.remove("correct", "wrong");
+    });
+
+    document.querySelectorAll(".feedback").forEach(feedback => {
+        feedback.textContent = "";
+        feedback.className = "feedback";
+    });
+
+    document.querySelectorAll(".hint").forEach(hint => {
+        hint.classList.remove("show");
+    });
+
+    document.getElementById("scoreBox").classList.remove("show");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+</script>
+</body>
+</html>

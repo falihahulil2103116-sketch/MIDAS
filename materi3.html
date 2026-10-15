@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aktivitas 2 - MIDAS</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 20px 12px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-image: url("wallpaper4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    line-height: 1.6;
+}
+
+.container { max-width: 760px; margin: auto; }
+
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #667085;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 21px;
+    margin-top: 28px;
+    color: #315da8;
+}
+
+h3 { font-size: 17px; margin-bottom: 8px; }
+
+.diagram-box {
+    background: #f7f8ff;
+    padding: 20px 10px;
+    border-radius: 18px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pie {
+    width: min(270px, 75vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin: 15px auto;
+    position: relative;
+    background: conic-gradient(
+        from 0deg,
+        #667eea 0deg 90deg,
+        #f59e0b 90deg 210deg,
+        #10b981 210deg 270deg,
+        #9b78df 270deg 360deg
+    );
+    border: 3px solid white;
+}
+
+.pie-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.35;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+.label-mawar { left: 72%; top: 27%; }
+.label-melati { left: 65%; top: 70%; }
+.label-sepatu { left: 28%; top: 78%; }
+.label-bougenvil { left: 27%; top: 27%; }
+
+.diagram-note {
+    font-size: 14px;
+    color: #667085;
+}
+
+.info-box {
+    background: #edf4ff;
+    border-left: 4px solid #477bd1;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+}
+
+.question {
+    border: 1px solid #e1e7f0;
+    border-radius: 15px;
+    padding: 18px;
+    margin: 18px 0;
+}
+
+.formula {
+    margin: 14px 0;
+    line-height: 2.8;
+    overflow-wrap: anywhere;
+}
+
+.answer {
+    display: inline-block;
+    width: 76px;
+    max-width: 100%;
+    padding: 8px 4px;
+    border: 2px solid #b9c9e5;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    background: #fff;
+    color: #222;
+}
+
+.answer:focus {
+    outline: 2px solid #5c8ee6;
+    border-color: #5c8ee6;
+}
+
+.answer.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+}
+
+.answer.wrong {
+    border-color: #dc2626;
+    background: #fff7f7;
+}
+
+.answer.text-answer { width: 155px; }
+
+.hint {
+    display: none;
+    background: #fff8e6;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+    color: #754b00;
+    font-size: 14px;
+}
+
+.hint.show { display: block; }
+
+.feedback {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.feedback.good { color: #16803d; }
+.feedback.bad { color: #c62828; }
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 17px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.check-btn { background: #3a9fce; color: white; }
+.hint-btn { background: #fff0bd; color: #6b4c00; }
+
+.main-btn {
+    width: 100%;
+    margin-top: 20px;
+    background: #3aa8d7;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.reset-btn { background: #edf0f5; color: #334155; }
+
+.score-box {
+    display: none;
+    padding: 18px;
+    background: #e9f8ee;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.score-box.show { display: block; }
+
+.footer-note {
+    font-size: 13px;
+    color: #667085;
+    margin-top: 25px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body { padding: 12px 8px; }
+
+    .card {
+        padding: 20px 15px;
+        border-radius: 20px;
+    }
+
+    h1 { font-size: 24px; }
+    h2 { font-size: 19px; }
+
+    .question { padding: 14px 12px; }
+    .formula { font-size: 15px; line-height: 2.6; }
+    .answer { width: 68px; font-size: 16px; padding: 7px 3px; }
+    .answer.text-answer { width: 135px; }
+    button { font-size: 14px; }
+    .pie-label { font-size: 11px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="card">
+
+<h1>🌱 Aktivitas 1</h1>
+<p class="subtitle">
+Menentukan Frekuensi Berdasarkan Besar Sudut Sektor
+</p>
+
+<div class="info-box">
+<strong>Petunjuk pengerjaan</strong>
+<p>
+Amati diagram lingkaran berikut. Isilah setiap kotak dengan
+bilangan yang tepat. Gunakan garis miring untuk operasi
+pembagian. Gunakan tombol <strong>Petunjuk</strong> jika
+mengalami kesulitan, lalu tekan <strong>Periksa Jawaban</strong>.
+</p>
+</div>
+
+<h2>1. Mengamati Diagram</h2>
+
+<p>
+Diagram berikut menunjukkan jumlah 120 tanaman di taman sekolah
+berdasarkan jenisnya.
+</p>
+
+<div class="diagram-box">
+<div class="pie" role="img"
+aria-label="Diagram lingkaran jenis tanaman di taman sekolah">
+    <span class="pie-label label-mawar">
+        Mawar<br>90°
+    </span>
+    <span class="pie-label label-melati">
+        Melati<br>120°
+    </span>
+    <span class="pie-label label-sepatu">
+        Kembang<br>sepatu<br>60°
+    </span>
+    <span class="pie-label label-bougenvil">
+        Bougenvil<br>90°
+    </span>
+</div>
+<div class="diagram-note">
+Jumlah seluruh tanaman = 120 tanaman
+</div>
+</div>
+
+<div class="info-box">
+Ingat! Besar sudut satu lingkaran penuh adalah
+<strong>360°</strong>.
+</div>
+
+<h2>2. Menentukan Frekuensi</h2>
+
+<div class="question" id="q1">
+<h3>a. Banyak tanaman mawar</h3>
+
+<p>
+Besar sudut sektor mawar adalah 90°. Jumlah seluruh tanaman
+adalah 120 tanaman.
+</p>
+
+<p>Frekuensi tanaman mawar:</p>
+
+<div class="formula">
+F = 90 /
+<input class="answer" data-answer="360"
+aria-label="Sudut satu lingkaran penuh" inputmode="decimal">
+×
+<input class="answer" data-answer="120"
+aria-label="Jumlah seluruh tanaman" inputmode="decimal">
+=
+<input class="answer" data-answer="30"
+aria-label="Frekuensi tanaman mawar" inputmode="decimal">
+</div>
+
+<p>
+Jadi, banyak tanaman mawar adalah
+<input class="answer" data-answer="30"
+aria-label="Jawaban akhir tanaman mawar" inputmode="decimal">
+tanaman.
+</p>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q1')">Periksa Jawaban</button>
+<button class="hint-btn" onclick="petunjuk('h1')">Petunjuk</button>
+</div>
+<div class="hint" id="h1">
+Bandingkan sudut sektor mawar dengan 360°, lalu kalikan
+hasilnya dengan 120 tanaman.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+<div class="question" id="q2">
+<h3>b. Banyak tanaman melati</h3>
+
+<p>
+Besar sudut sektor melati adalah
+<input class="answer" data-answer="120"
+aria-label="Sudut sektor melati" inputmode="decimal">°.
+</p>
+
+<p>Frekuensi tanaman melati:</p>
+
+<div class="formula">
+F =
+<input class="answer" data-answer="120"
+aria-label="Sudut sektor melati dalam perhitungan" inputmode="decimal">
+/
+<input class="answer" data-answer="360"
+aria-label="Sudut satu lingkaran penuh untuk melati" inputmode="decimal">
+× 120 =
+<input class="answer" data-answer="40"
+aria-label="Frekuensi tanaman melati" inputmode="decimal">
+</div>
+
+<p>
+Jadi, banyak tanaman melati adalah
+<input class="answer" data-answer="40"
+aria-label="Jawaban akhir tanaman melati" inputmode="decimal">
+tanaman.
+</p>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q2')">Periksa Jawaban</button>
+<button class="hint-btn" onclick="petunjuk('h2')">Petunjuk</button>
+</div>
+<div class="hint" id="h2">
+Frekuensi = sudut sektor / 360 × jumlah seluruh tanaman.
+Sederhanakan 120/360 terlebih dahulu agar lebih mudah.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+<h2>3. Menginterpretasikan Diagram Lingkaran</h2>
+
+<div class="question" id="q3">
+<h3>a. Selisih banyak tanaman mawar dan kembang sepatu</h3>
+
+<p>
+Sudut sektor mawar adalah 90°, sedangkan sudut sektor
+kembang sepatu adalah 60°.
+</p>
+
+<p>Selisih besar sudut sektor:</p>
+
+<div class="formula">
+S =
+<input class="answer" data-answer="90"
+aria-label="Sudut sektor mawar" inputmode="decimal">°
+−
+<input class="answer" data-answer="60"
+aria-label="Sudut sektor kembang sepatu" inputmode="decimal">°
+=
+<input class="answer" data-answer="30"
+aria-label="Selisih sudut sektor" inputmode="decimal">°
+</div>
+
+<p>Selisih frekuensi kedua jenis tanaman:</p>
+
+<div class="formula">
+F =
+<input class="answer" data-answer="30"
+aria-label="Selisih sudut dalam perhitungan frekuensi" inputmode="decimal">
+/
+<input class="answer" data-answer="360"
+aria-label="Sudut penuh dalam perhitungan selisih" inputmode="decimal">
+× 120 =
+<input class="answer" data-answer="10"
+aria-label="Selisih frekuensi tanaman" inputmode="decimal">
+</div>
+
+<p>
+Jadi, selisih banyak tanaman mawar dan kembang sepatu adalah
+<input class="answer" data-answer="10"
+aria-label="Jawaban akhir selisih tanaman" inputmode="decimal">
+tanaman.
+</p>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q3')">Periksa Jawaban</button>
+<button class="hint-btn" onclick="petunjuk('h3')">Petunjuk</button>
+</div>
+<div class="hint" id="h3">
+Kurangkan sudut mawar dengan sudut kembang sepatu.
+Gunakan selisih sudut tersebut untuk menghitung selisih frekuensi.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+<div class="question" id="q4">
+<h3>b. Jumlah tanaman mawar dan bougenvil</h3>
+
+<p>
+Sudut sektor mawar adalah 90°, sedangkan sudut sektor
+bougenvil adalah 90°.
+</p>
+
+<p>Jumlah besar sudut kedua sektor:</p>
+
+<div class="formula">
+S =
+<input class="answer" data-answer="90"
+aria-label="Sudut sektor mawar untuk penjumlahan" inputmode="decimal">°
++
+<input class="answer" data-answer="90"
+aria-label="Sudut sektor bougenvil" inputmode="decimal">°
+=
+<input class="answer" data-answer="180"
+aria-label="Jumlah sudut kedua sektor" inputmode="decimal">°
+</div>
+
+<p>Jumlah frekuensi kedua jenis tanaman:</p>
+
+<div class="formula">
+F =
+<input class="answer" data-answer="180"
+aria-label="Jumlah sudut dalam perhitungan frekuensi" inputmode="decimal">
+/
+<input class="answer" data-answer="360"
+aria-label="Sudut penuh untuk perhitungan jumlah tanaman" inputmode="decimal">
+×
+<input class="answer" data-answer="120"
+aria-label="Jumlah seluruh tanaman untuk perhitungan" inputmode="decimal">
+=
+<input class="answer" data-answer="60"
+aria-label="Jumlah frekuensi mawar dan bougenvil" inputmode="decimal">
+</div>
+
+<p>
+Jadi, jumlah tanaman mawar dan bougenvil adalah
+<input class="answer" data-answer="60"
+aria-label="Jawaban akhir jumlah tanaman" inputmode="decimal">
+tanaman.
+</p>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q4')">Periksa Jawaban</button>
+<button class="hint-btn" onclick="petunjuk('h4')">Petunjuk</button>
+</div>
+<div class="hint" id="h4">
+Jumlahkan kedua sudut sektor. Kemudian bagi dengan 360°
+dan kalikan hasilnya dengan jumlah seluruh tanaman.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+<h2>4. Menyimpulkan</h2>
+
+<div class="question" id="q5">
+<p>
+Jadi, dapat disimpulkan rumus untuk mencari frekuensi
+suatu kategori jika besar sudut sektornya diketahui adalah:
+</p>
+
+<div class="formula">
+Frekuensi =
+<input class="answer text-answer"
+data-answer="besar sudut sektor"
+aria-label="Besaran sudut sektor dalam rumus"
+type="text">
+/
+<input class="answer"
+data-answer="360"
+aria-label="Sudut satu lingkaran penuh"
+inputmode="decimal">
+×
+<input class="answer text-answer"
+data-answer="jumlah seluruh data"
+aria-label="Jumlah seluruh data dalam rumus"
+type="text">
+</div>
+
+<div class="info-box">
+<strong>Petunjuk:</strong>
+Ingat cara menghitung frekuensi tanaman mawar dan melati.
+Bandingkan besar sudut sektor dengan sudut satu lingkaran penuh,
+kemudian kalikan dengan jumlah seluruh tanaman.
+</div>
+
+<div class="button-row">
+<button class="check-btn" onclick="periksa('q5')">Periksa Jawaban</button>
+<button class="hint-btn" onclick="petunjuk('h5')">Petunjuk</button>
+</div>
+
+<div class="hint" id="h5">
+Gunakan tiga bagian dalam rumus: besar sudut sektor,
+360°, dan jumlah seluruh data.
+</div>
+<div class="feedback" aria-live="polite"></div>
+</div>
+
+<div class="score-box" id="scoreBox" aria-live="polite">
+<h3>Hasil Latihan</h3>
+<p id="scoreText"></p>
+<p>Periksa kembali kotak yang belum tepat, lalu coba lagi.</p>
+</div>
+
+<button class="main-btn" onclick="periksaSemua()">
+Periksa Semua Jawaban
+</button>
+
+<button class="main-btn reset-btn" onclick="resetLatihan()">
+Ulangi Latihan
+</button>
+
+<button class="main-btn" onclick="location.href='menu.html'">
+← Kembali ke Menu
+</button>
+
+<p class="footer-note">
+MIDAS — Belajar memahami data dan diagram secara bertahap.
+</p>
+
+</div>
+</div>
+
+<script>
+function normalisasi(nilai) {
+    return nilai.trim()
+        .replace(/\s+/g, " ")
+        .replace(",", ".")
+        .toLowerCase();
+}
+
+function periksa(id) {
+    const bagian = document.getElementById(id);
+    const input = bagian.querySelectorAll(".answer");
+    const feedback = bagian.querySelector(".feedback");
+    let benar = 0;
+
+    input.forEach(kotak => {
+        const jawaban = normalisasi(kotak.value);
+        const kunci = normalisasi(kotak.dataset.answer);
+
+        kotak.classList.remove("correct", "wrong");
+
+        if (jawaban !== "" && jawaban === kunci) {
+            kotak.classList.add("correct");
+            benar++;
+        } else {
+            kotak.classList.add("wrong");
+        }
+    });
+
+    if (benar === input.length) {
+        feedback.textContent =
+            "Benar! Semua jawaban pada bagian ini tepat.";
+        feedback.className = "feedback good";
+    } else {
+        feedback.textContent =
+            benar + " dari " + input.length +
+            " kotak benar. Periksa kembali atau buka petunjuk.";
+        feedback.className = "feedback bad";
+    }
+}
+
+function petunjuk(id) {
+    document.getElementById(id).classList.toggle("show");
+}
+
+function periksaSemua() {
+    const bagian = ["q1", "q2", "q3", "q4", "q5"];
+    let benar = 0;
+    let total = 0;
+
+    bagian.forEach(id => {
+        const soal = document.getElementById(id);
+        const input = soal.querySelectorAll(".answer");
+        let benarBagian = true;
+
+        input.forEach(kotak => {
+            total++;
+
+            const jawaban = normalisasi(kotak.value);
+            const kunci = normalisasi(kotak.dataset.answer);
+
+            kotak.classList.remove("correct", "wrong");
+
+            if (jawaban !== "" && jawaban === kunci) {
+                benar++;
+                kotak.classList.add("correct");
+            } else {
+                kotak.classList.add("wrong");
+                benarBagian = false;
+            }
+        });
+
+        const feedback = soal.querySelector(".feedback");
+
+        feedback.textContent = benarBagian
+            ? "Benar! Semua jawaban pada bagian ini tepat."
+            : "Masih ada jawaban yang perlu diperbaiki.";
+
+        feedback.className = benarBagian
+            ? "feedback good"
+            : "feedback bad";
+    });
+
+    const scoreBox = document.getElementById("scoreBox");
+    scoreBox.classList.add("show");
+
+    document.getElementById("scoreText").textContent =
+        "Jawaban benar: " + benar + " dari " + total +
+        " kotak (" + Math.round(benar / total * 100) + "%).";
+
+    scoreBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+function resetLatihan() {
+    document.querySelectorAll(".answer").forEach(kotak => {
+        kotak.value = "";
+        kotak.classList.remove("correct", "wrong");
+    });
+
+    document.querySelectorAll(".feedback").forEach(feedback => {
+        feedback.textContent = "";
+        feedback.className = "feedback";
+    });
+
+    document.querySelectorAll(".hint").forEach(hint => {
+        hint.classList.remove("show");
+    });
+
+    document.getElementById("scoreBox").classList.remove("show");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+</script>
+</body>
+</html>

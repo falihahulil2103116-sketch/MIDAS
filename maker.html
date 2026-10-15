@@ -256,10 +256,11 @@ function tampilkanHasil(data, total) {
             <td>${item.kategori}</td>
 
             <td>${item.frekuensi}</td>
+           
+            <td>${persentase.toFixed(1).replace(".", ",")}%</td>
 
-            <td>${persentase.toFixed(1)}%</td>
+            <td>${sudut.toFixed(1).replace(".", ",")}°</td>
 
-            <td>${sudut.toFixed(1)}°</td>
         `;
 
         tabel.appendChild(row);
@@ -338,7 +339,7 @@ function gambarDiagram(data, total) {
             centerY + Math.sin(sudutTengah) * jarakLabel;
 
         const persentase =
-            ((item.frekuensi / total) * 100).toFixed(1) + "%";
+            ((item.frekuensi / total) * 100).toFixed(1) .replace(".", ",") + "%";
 
         // Ukuran tulisan menyesuaikan lebar irisan
         const lebarIrisan =
@@ -347,8 +348,8 @@ function gambarDiagram(data, total) {
             );
 
         let ukuranFont = Math.min(
-            14,
-            Math.max(8, lebarIrisan / 7)
+            19,
+            Math.max(13, lebarIrisan / 5)
         );
 
         const nama = item.kategori;
@@ -361,7 +362,7 @@ function gambarDiagram(data, total) {
         ctx.shadowBlur = 2;
 
         // Mengecilkan font jika nama kategori terlalu panjang
-        while (ukuranFont > 7) {
+        while (ukuranFont > 10) {
             ctx.font = `bold ${ukuranFont}px Arial`;
 
             const lebarTeks = Math.max(
