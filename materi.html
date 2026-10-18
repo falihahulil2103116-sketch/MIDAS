@@ -75,16 +75,28 @@
         <strong>100%</strong> atau <strong>360°</strong>.
     </div>
 
-    <button onclick="nextStep()">
+<div class="button-navigation">
+    <button
+        type="button"
+        class="btn-back"
+        onclick="history.back()">
+        ← Back
+    </button>
+
+    <button
+        type="button"
+        class="btn-kumpulkan"
+        onclick="nextStep()">
         Saya Paham →
     </button>
+</div>
 
 </section>
 
             <!-- LANGKAH 2 -->
             <section class="lesson-step" id="step2">
 
-                <h2>📊 Hubungan Data dan Lingkaran</h2>
+                <h2>📊 Hubungan Data dan Diagram Lingkaran</h2>
 
                 <p>
                     Perhatikan data buah favorit siswa berikut.
@@ -149,10 +161,14 @@
                 </button>
 
                 <div id="hintTotal" class="hint">
-                    Petunjuk: jumlahkan semua frekuensi. Jumlah seluruh data = jumlah seluruh siswa
+                    Petunjuk: jumlah seluruh data sama dengan jumlah seluruh siswa.
                     <br>
                     5 + 7 + 4 + 4 = ...
                 </div>
+
+                <button class="secondary" onclick="previousStep()">
+                 ← Kembali
+                </button>
 
             </section>
 
@@ -160,33 +176,58 @@
             <!-- LANGKAH 3 -->
             <section class="lesson-step" id="step3">
 
-                <h2>📐 Menentukan Besar Sudut</h2>
+                <h2>📐 Menentukan Besar Sudut Pusat</h2>
 
                 <p>
-                    Sekarang kita akan menentukan besar sudut
+                    Sekarang kita akan menentukan besar sudut pusat
                     setiap bagian diagram.
                 </p>
 
-                <div class="info-box">
+                
+<div class="info-box rumus-box">
 
-    💡 <strong>Petunjuk:</strong>
+    <h3>💡 Cara Menentukan Besar Sudut Pusat</h3>
 
     <p>
-        Besar sudut suatu kategori dapat dihitung dengan:
+        Besar sudut pusat yang mewakili suatu kategori
+        dapat dihitung menggunakan rumus berikut.
     </p>
 
-    <div class="formula">
-        <span>Besar Sudut =</span>
+    <div class="rumus-utama">
+        <span class="rumus-label">Besar Sudut Pusat</span>
 
-        <div class="fraction">
-            <div class="numerator">
-                Frekuensi × 360°
-            </div>
+        <span class="rumus-persamaan">
+            =
+            <span class="pecahan-rumus">
+                <span class="pembilang">Frekuensi × 360°</span>
+                <span class="penyebut">Jumlah Seluruh Data</span>
+            </span>
+        </span>
+    </div>
 
-            <div class="denominator">
-                Jumlah Data
-            </div>
-        </div>
+    <div class="keterangan-rumus">
+        <h4>Keterangan:</h4>
+
+        <p>
+            <strong>Frekuensi</strong> adalah banyaknya data
+            pada kategori yang ingin dihitung.
+        </p>
+
+        <p>
+            <strong>360°</strong> adalah besar sudut
+            satu lingkaran penuh.
+        </p>
+
+        <p>
+            <strong>Jumlah seluruh data</strong> adalah total
+            frekuensi dari semua kategori.
+        </p>
+
+        <p>
+            <strong>Sudut pusat</strong> adalah besar sudut
+            yang membentuk juring untuk suatu kategori
+            pada diagram lingkaran.
+        </p>
     </div>
 
 </div>
@@ -232,7 +273,7 @@
                 <div class="question-box">
 
                     <strong>
-                        Berapa besar sudut untuk siswa yang suka Apel 🍎 (dalam derajat)?
+                        Berapa besar sudut pusat yang merepresentasikan siswa yang suka Apel 🍎 (dalam derajat)?
                     </strong>
 
                     <input
@@ -264,23 +305,31 @@
 
     Maka:
 
-    <div class="formula">
-        <span>Sudut =</span>
+   
+<div class="hint-formula">
 
-        <div class="fraction">
-            <div class="numerator">
-                5 × 360°
-            </div>
+    <div class="hint-formula-label">
+        Besar Sudut Pusat
+    </div>
 
-            <div class="denominator">
-                20
-            </div>
+    <div class="hint-calculation">
+        <span>=</span>
+
+        <div class="hint-fraction">
+            <div class="hint-numerator">5 × 360°</div>
+            <div class="hint-denominator">20</div>
         </div>
 
-        <span>= ...</span>
+        <span>= ...°</span>
     </div>
 
 </div>
+
+</div>
+
+    <button class="secondary" onclick="previousStep()">
+     ← Kembali
+    </button>
 
             </section>
 
@@ -291,8 +340,8 @@
                 <h2>⭕ Membuat Diagram</h2>
 
                 <p>
-                    Sekarang kamu sudah mengetahui besar sudut
-                    untuk siswa yang suka apel. Berikutnya, lakukan langkah yang sama
+                    Sekarang kamu sudah mengetahui besar sudut pusat yang merepresentasikan
+                    banyak siswa yang suka apel. Berikutnya, lakukan langkah yang sama
                     pada kategori lain.
                 </p>
 
@@ -334,7 +383,7 @@
 
     <!-- APEL -->
     <div class="angle-question">
-        <p>🍎 Apel</p>
+        <p>Besar sudut pusat yang merepresentasikan jumlah siswa yang suka 🍎 Apel</p>
 
         <div class="calculation">
             <div class="fraction">
@@ -354,7 +403,7 @@
 
     <!-- MANGGA -->
     <div class="angle-question">
-        <p>🥭 Mangga</p>
+        <p>Besar sudut pusat yang merepresentasikan banyak siswa yang suka 🥭 Mangga</p>
 
         <div class="calculation">
 
@@ -386,7 +435,7 @@
 
     <!-- JERUK -->
     <div class="angle-question">
-        <p>🍊 Jeruk</p>
+        <p>Besar sudut pusat yang merepresentasikan banyak siswa yang suka 🍊 Jeruk</p>
 
         <div class="calculation">
 
@@ -418,7 +467,7 @@
 
     <!-- PISANG -->
     <div class="angle-question">
-        <p>🍌 Pisang</p>
+        <p>Besar sudut pusat yang merepresentasikan banyak siswa yang suka 🍌 Pisang</p>
 
         <div class="calculation">
 
@@ -458,7 +507,7 @@
 
     <br><br>
 
-    Jika seluruh persentase dijumlahkan:
+    Jika seluruh sudut pusat dijumlahkan:
 
     <br>
 
@@ -471,11 +520,23 @@
     oleh satu lingkaran penuh.
 </p>
 
-<button onclick="nextStep()">
-    Lihat Diagram Lingkaran →
-</button>
-                
-            </section>
+<div class="button-navigation">
+    <button
+        type="button"
+        class="btn-back"
+        onclick="previousStep()">
+        ← Back
+    </button>
+
+    <button
+        type="button"
+        class="btn-kumpulkan"
+        onclick="nextStep()">
+        Lihat diagram lingkaran →
+    </button>
+</div>
+
+</section>
 
 
            <!-- LANGKAH 5 -->
@@ -484,7 +545,7 @@
     <h2> Hasil Diagram Lingkaran </h2>
 
     <p>
-        Kamu sudah menghitung besar sudut setiap kategori.
+        Kamu sudah menghitung besar sudut pusat yang merepresentasikan setiap kategori.
         Sekarang perhatikan diagram lingkaran berikut.
     </p>
 
@@ -501,28 +562,28 @@
         💡 <strong>Perhatikan!</strong>
 
         <p>
-            Besar sudut menunjukkan seberapa besar bagian
+            Besar sudut pusat menunjukkan seberapa besar bagian
             suatu kategori dalam satu lingkaran.
         </p>
 
         <p>
-            🍎 <strong>90°</strong> berarti sektor apel
+            🍎 <strong>90°</strong> berarti besar juring yang merepresentasikan siswa penyuka apel
             besarnya tepat <strong>¼ lingkaran</strong>.
         </p>
 
         <p>
-            🍊 dan 🍌 <strong>72°</strong> berarti sektor Jeruk dan pisang
+            🍊 dan 🍌 <strong>72°</strong> berarti besar juring yang merepresentasikan siswa penyuka Jeruk dan pisang
             sedikit lebih kecil dari <strong>¼ lingkaran</strong> (90°).
         </p>
 
         <p>
-            🥭 <strong>126°</strong> berarti sektor Mangga
+            🥭 <strong>126°</strong> berarti besar juring yang merepresentasikan siswa penyuka Mangga
             sedikit lebih kecil dari <strong>½ lingkaran</strong> (180°).
         </p>
 
         <p>
-            Semakin besar sudut suatu kategori,
-            semakin besar pula bagian kategori tersebut
+            Semakin besar sudut pusat,
+            semakin besar pula juring suatu kategori
             dalam diagram lingkaran.
         </p>
 
@@ -542,17 +603,29 @@
 
         <p>
             Kamu sudah belajar mengenal diagram lingkaran,
-            menghitung jumlah data, menentukan besar sudut,
-            dan memahami hubungan antara data dengan besar sektor.
+            menghitung jumlah data, menentukan besar sudut pusat yang merepresentasikan suatu kategori,
+            dan memahami hubungan antara data dengan besar juring pada diagram lingkaran.
         </p>
 
     </div>
 
+    <div class="button-navigation">
+
     <button
-        class="secondary"
-        onclick="location.href='menu.html'">
-        ← Kembali ke Menu
+        type="button"
+        class="btn-back"
+        onclick="previousStep()">
+        ← Back
     </button>
+
+    <button
+        type="button"
+        class="btn-kumpulkan"
+        onclick="location.href='menu.html'">
+        Kembali ke Menu
+    </button>
+
+</div>
 
 </section>
 
@@ -632,7 +705,7 @@
             if (jawaban == 90) {
 
                 feedback.innerHTML =
-                    "🎉 Benar! Besar sudut Apel adalah 90°.";
+                    "🎉 Benar! Besar sudut pusat yang merepresentasikan banyak siswa penyuka Apel adalah 90°.";
 
                 setTimeout(() => {
                     nextStep();
@@ -715,7 +788,7 @@
     } else {
 
         feedback.innerHTML =
-            "💡 Belum tepat. Coba periksa kembali frekuensi, jumlah data, dan hasil sudutnya.";
+            "💡 Belum tepat. Coba periksa kembali frekuensi, jumlah data, dan hasil sudut pusatnya.";
 
         feedback.className = "feedback feedback-salah";
     }
@@ -737,6 +810,12 @@ function tampilkanCatatan() {
     }
 }
 
+function previousStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        tampilkanStep();
+    }
+}
     </script>
 
 </body>

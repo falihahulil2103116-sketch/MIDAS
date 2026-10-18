@@ -1355,3 +1355,269 @@ button:hover {
     }
 
 }
+
+.button-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.button-navigation button {
+    box-sizing: border-box;
+    min-height: 46px;
+    margin: 0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button-navigation .btn-back {
+    flex: 0 0 30%;
+    padding: 12px 8px;
+}
+
+.button-navigation .btn-kumpulkan {
+    flex: 1;
+    padding: 12px 10px;
+    white-space: nowrap;
+}
+
+/* Penyesuaian layar HP */
+@media (max-width: 400px) {
+    .button-navigation {
+        gap: 8px;
+    }
+
+    .button-navigation button {
+        min-height: 42px;
+        font-size: 13px;
+        border-radius: 10px;
+    }
+
+    .button-navigation .btn-back {
+        flex-basis: 28%;
+        padding: 10px 5px;
+    }
+
+    .button-navigation .btn-kumpulkan {
+        padding: 10px 5px;
+    }
+}
+
+/* KOTAK RUMUS LANGKAH 3 */
+.rumus-box {
+    text-align: left;
+    padding: 22px;
+    margin: 20px 0;
+    border-radius: 18px;
+    overflow-wrap: break-word;
+}
+
+.rumus-box h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.rumus-box h4 {
+    margin: 0 0 12px;
+    color: #3a6ed7;
+}
+
+.rumus-utama {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 24px auto;
+    padding: 20px 12px;
+    background: #f7e479;
+    border: 2px solid #ffffff;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.rumus-label {
+    font-weight: 700;
+    color: #3a6ed7;
+}
+
+.rumus-persamaan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.pecahan-rumus {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.pembilang {
+    padding: 2px 10px 6px;
+    border-bottom: 2px solid currentColor;
+}
+
+.penyebut {
+    padding: 6px 10px 2px;
+}
+
+.keterangan-rumus,
+.contoh-rumus {
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(159, 216, 255, 0.75);
+}
+
+.keterangan-rumus p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.contoh-rumus ul {
+    padding-left: 22px;
+    line-height: 1.8;
+}
+
+.rumus-contoh {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+    font-size: 21px;
+    font-weight: 700;
+    flex-wrap: wrap;
+}
+
+.kesimpulan-rumus {
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* PENYESUAIAN UNTUK HP */
+@media (max-width: 600px) {
+    .rumus-box {
+        padding: 15px;
+    }
+
+    .rumus-utama {
+        padding: 16px 8px;
+    }
+
+    .rumus-persamaan {
+        font-size: 16px;
+        gap: 6px;
+    }
+
+    .pecahan-rumus {
+        font-size: 15px;
+    }
+
+    .pembilang,
+    .penyebut {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .keterangan-rumus,
+    .contoh-rumus {
+        padding: 12px;
+    }
+
+    .rumus-contoh {
+        font-size: 18px;
+        gap: 10px;
+    }
+}
+
+
+/* PERBAIKAN RUMUS PETUNJUK LANGKAH 3 */
+#hintSudut .hint-formula {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px auto 0;
+    padding: 18px 12px;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+
+    color: #222;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#hintSudut .hint-formula-label {
+    width: 100%;
+    text-align: center;
+    color: #222;
+    white-space: normal;
+}
+
+#hintSudut .hint-calculation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+}
+
+#hintSudut .hint-fraction {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+#hintSudut .hint-numerator {
+    padding: 4px 16px 8px;
+    border-bottom: 2px solid #333;
+}
+
+#hintSudut .hint-denominator {
+    padding: 6px 16px 2px;
+}
+
+#hintSudut .hint-calculation > span {
+    white-space: nowrap;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+    #hintSudut .hint-formula {
+        font-size: 17px;
+        padding: 12px 4px;
+        gap: 12px;
+    }
+
+    #hintSudut .hint-calculation {
+        gap: 10px;
+    }
+
+    #hintSudut .hint-numerator,
+    #hintSudut .hint-denominator {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
