@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Game - MIDAS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 25px 15px;
+            font-family: Arial, sans-serif;
+            background: url("wallpaper3.jpg") center / cover fixed;
+        }
+
+        .game-container {
+            max-width: 750px;
+            margin: 20px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h1 {
+            color: #3a6ed7;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .wordwall-frame {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .wordwall-frame iframe {
+            display: block;
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        .btn-kembali {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #f0b429;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+
+        .btn-kembali:hover {
+            background: #d99d18;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            .game-container {
+                padding: 20px 12px;
+                border-radius: 18px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .wordwall-frame iframe {
+                height: 400px;
+            }
+
+            .btn-kembali {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <h1>🎮 Game MIDAS</h1>
+
+        <p class="subtitle">
+            Yuk, uji pemahamanmu tentang diagram lingkaran
+            melalui permainan interaktif berikut!
+        </p>
+
+        <div class="wordwall-frame">
+            <iframe
+                src="https://wordwall.net/embed/8dd5fe55a6f542b0bb5e05660150f2cb?themeId=46&templateId=48&fontStackId=0"
+                title="Game Diagram Lingkaran MIDAS"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <a href="menu.html" class="btn-kembali">
+            ← Kembali ke Menu
+        </a>
+
+    </div>
+
+</body>
+</html>
